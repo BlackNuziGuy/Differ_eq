@@ -2,15 +2,19 @@
 #define EULER_H
 #include <Graph.h>
 
-class Euler
+class Euler : public Graph
 {
+
 public:
-    Euler();
-    QCustomPlot *graph;
-    virtual void AddGraph(QCustomPlot *element);
-    virtual void Calculate(double x0, double y0, double X, int N);
-    virtual void Visibile(bool x);
-    virtual double func(double x, double c);
+
+    Euler(QCustomPlot * graph);
+
+
+    void Calculate(double x0, double y0, double X, int N);
+    void Visibile(bool x);
+    double func(double x, double c);
+
+
 };
 
 #endif // EULER_H

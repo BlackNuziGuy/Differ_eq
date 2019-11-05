@@ -2,27 +2,26 @@
 #include <math.h>
 #include <QMainWindow>
 
-Main_Graph::Main_Graph()
+Main_Graph::Main_Graph(QCustomPlot * element) : euler(element), exact(element)
 {
-}
-
-QCustomPlot* Main_Graph::graph;
-
-
-void Main_Graph::AddGraph(QCustomPlot *element)
-{
-
     graph = element;
 
+    //For each method
+    graph->addGraph();
+    graph->addGraph();
+    graph->addGraph();
+    graph->addGraph();
+
+
     graph->setInteraction(QCP::iSelectPlottables, true);
-
-
-
     graph->xAxis->ticker()->setTickStepStrategy( QCPAxisTicker::tssReadability);
 
-    exact.AddGraph(element);
-    euler.AddGraph(element);
+
+    graph->xAxis->setLabel("x");
+    graph->yAxis->setLabel("y");
 }
+
+
 
 
 void Main_Graph::Zoom(double x1, double x2)
@@ -32,6 +31,12 @@ void Main_Graph::Zoom(double x1, double x2)
     graph->yAxis->setRange((x1 > 0)? -1:x1 , x2);
 
     graph->replot();
+}
+
+void Main_Graph::Caculate_all(double x0, double y0, double X, int N)
+{
+
+
 }
 
 

@@ -6,15 +6,19 @@
 #include "imp_euler.h"
 #include "euler.h"
 
+
 class Main_Graph
 {
 public:
-    static QCustomPlot* graph;
+
+    QCustomPlot* graph;
     Exact_Graph exact;
     Euler euler;
-    Main_Graph();
-    void AddGraph(QCustomPlot *element);
+
+
+    Main_Graph(QCustomPlot *element);
     void Zoom(double, double);
+    void Caculate_all(double x0, double y0, double X, int N);
 };
 
 #endif // MAIN_GRAPH_H

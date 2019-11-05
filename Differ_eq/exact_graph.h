@@ -5,11 +5,13 @@
 class Exact_Graph : public Graph
 {
 public:
-    QCustomPlot *graph;
-    virtual void AddGraph(QCustomPlot *element);
-    virtual void Calculate(double x0, double y0, double X, int N);
-    virtual void Visibile(bool x);
-    virtual double func(double x, double c);
+
+    Exact_Graph(QCustomPlot *);
+
+    void Calculate(double x0, double y0, double X, int N);
+    void Visibile(bool x);
+    double func(double x, double c);
+
 };
 
 #endif // EXACT_GRAPH_H

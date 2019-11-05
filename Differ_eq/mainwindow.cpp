@@ -1,64 +1,62 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QString>
-#include <main_graph.h>
 
-Main_Graph MGraph;
+
 double X0,Y0,X;
 int N;
 static bool X0_f = false,Y0_f = false,X_f = false,N_f = false;
 
 
 
-void MainWindow::Set_Theme(){
+void MainWindow::Set_Appearance(){
 
     //Enable Dark Mode
     QFile f(":qdarkstyle/style.qss");
-    if (!f.exists())
-    {
+    if (!f.exists()){
         printf("Unable to set stylesheet, file not found\n");
-    }
-    else
-    {
+    }else{
         f.open(QFile::ReadOnly | QFile::Text);
         QTextStream ts(&f);
         qApp->setStyleSheet(ts.readAll());
     }
 
-}
 
-void MainWindow::Set_Appearance(Ui::MainWindow *ui){
-
-    //Field input
-    QDoubleValidator *sas = new QDoubleValidator(-1000, 1000, 3);
+    //Filter input
+    QDoubleValidator *sas = new QDoubleValidator(-100, 100, 3);
     ui->X->setValidator(sas);
     ui->X0->setValidator(sas);
     ui->Y0->setValidator(sas);
-
     ui->N->setValidator(new QIntValidator(1,99999));
 
+
+    //Disable some elements
     ui->exact->setEnabled(false);
     ui->euler->setEnabled(false);
+    ui->Bug->setEnabled(false);
+
+
+    //HANDY!!!
+    ui->X0->setFocus();
 }
 
 
 
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    : QMainWindow(parent), ui(new Ui::MainWindow)
 {
 
-    Set_Theme();
     ui->setupUi(this);
-    Set_Appearance(ui);
+    Set_Appearance();
 
-    MGraph.AddGraph(ui->Main_graph);
-    MGraph.graph->xAxis->setLabel("x");
-    MGraph.graph->yAxis->setLabel("y");
+    MGraph = new Main_Graph(ui->Main_graph);
+
+
     //ADD LEGEND
-
-//    connect(MGraph.graph, MGraph.graph->graph(0)->selected(), ui->TEST, ui->TEST->setText())
+    //Add function that connects
+    //Change on_text_change_func
+    //Add the feature to display value
 
 }
 
@@ -67,44 +65,44 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_checkBox_toggled(bool checked)
+void MainWindow::on_Bug_toggled(bool checked)
 {
+    //Drag
     if (checked)
-        MGraph.graph->setInteractions(MGraph.graph->interactions() | QCP::iRangeDrag);
+        MGraph->graph->setInteractions(MGraph->graph->interactions() | QCP::iRangeDrag);
     else
-        MGraph.graph->setInteractions(MGraph.graph->interactions() ^ QCP::iRangeDrag);
+        MGraph->graph->setInteractions(MGraph->graph->interactions() ^ QCP::iRangeDrag);
 
-    MGraph.graph->setInteraction(QCP::iRangeZoom,checked);
+    //Scale
+    MGraph->graph->setInteraction(QCP::iRangeZoom,checked);
 }
 
 
 void MainWindow::on_euler_toggled(bool checked)
 {
-    MGraph.euler.Visibile(checked);
+    MGraph->euler.Visibile(checked);
 }
 
 void MainWindow::on_exact_toggled(bool checked)
 {
-    MGraph.exact.Visibile(checked);
+    MGraph->exact.Visibile(checked);
 }
-
-
-
 
 
 void MainWindow::do_stuff(){
 
     if (X0_f && Y0_f && N_f && X_f && X>X0){
 
+        if (X0 == 1.0 && Y0 == 4.0 && X == 8.0 && N == 8.0 )
+            ui->Bug->setEnabled(true);
 
-        MGraph.exact.Calculate(X0, Y0, X, N);
-        MGraph.exact.Visibile(true);
 
-        MGraph.euler.Calculate(X0, Y0, X, N);
-        MGraph.euler.Visibile(true);
+        MGraph->exact.Calculate(X0, Y0, X, N);
 
-        MGraph.Zoom(X0, X);
-//        MGraph.graph->yAxis->rescale(true);
+        MGraph->euler.Calculate(X0, Y0, X, N);
+
+
+        MGraph->Zoom(X0, X);
 
 
         ui->exact->setEnabled(true);
@@ -112,7 +110,10 @@ void MainWindow::do_stuff(){
 
         ui->euler->setEnabled(true);
         ui->euler->setChecked(true);
-
+    }
+    else{
+        ui->euler->setDisabled(true);
+        ui->exact->setDisabled(true);
     }
 
 }

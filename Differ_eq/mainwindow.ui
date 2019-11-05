@@ -134,6 +134,11 @@
               <height>50</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <kerning>true</kerning>
+             </font>
+            </property>
             <property name="toolTip">
              <string extracomment="Set all fields for the program to work"/>
             </property>
@@ -504,7 +509,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QCheckBox" name="checkBox">
+         <widget class="QCheckBox" name="Bug">
           <property name="font">
            <font>
             <family>MV Boli</family>
@@ -611,6 +616,20 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>X0</tabstop>
+  <tabstop>Y0</tabstop>
+  <tabstop>X</tabstop>
+  <tabstop>N</tabstop>
+  <tabstop>euler</tabstop>
+  <tabstop>checkBox_2</tabstop>
+  <tabstop>checkBox_3</tabstop>
+  <tabstop>exact</tabstop>
+  <tabstop>Bug</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>verticalSlider</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

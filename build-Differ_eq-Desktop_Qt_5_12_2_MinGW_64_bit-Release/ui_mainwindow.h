@@ -58,7 +58,7 @@ public:
     QGridLayout *gridLayout_2;
     QCustomPlot *Main_graph;
     QLabel *label_5;
-    QCheckBox *checkBox;
+    QCheckBox *Bug;
     QWidget *tab_3;
     QHBoxLayout *horizontalLayout_3;
     QVBoxLayout *verticalLayout_3;
@@ -142,6 +142,9 @@ public:
         sizePolicy2.setHeightForWidth(X0->sizePolicy().hasHeightForWidth());
         X0->setSizePolicy(sizePolicy2);
         X0->setMaximumSize(QSize(50, 50));
+        QFont font3;
+        font3.setKerning(true);
+        X0->setFont(font3);
 
         formLayout_2->setWidget(0, QFormLayout::FieldRole, X0);
 
@@ -216,9 +219,9 @@ public:
         sizePolicy1.setHeightForWidth(euler->sizePolicy().hasHeightForWidth());
         euler->setSizePolicy(sizePolicy1);
         euler->setMaximumSize(QSize(50, 50));
-        QFont font3;
-        font3.setPointSize(14);
-        euler->setFont(font3);
+        QFont font4;
+        font4.setPointSize(14);
+        euler->setFont(font4);
         euler->setMouseTracking(false);
         euler->setIconSize(QSize(14, 19));
         euler->setChecked(false);
@@ -308,16 +311,16 @@ public:
 
         gridLayout_3->addWidget(label_5, 0, 0, 1, 1);
 
-        checkBox = new QCheckBox(tab1);
-        checkBox->setObjectName(QString::fromUtf8("checkBox"));
-        QFont font4;
-        font4.setFamily(QString::fromUtf8("MV Boli"));
-        font4.setPointSize(10);
-        font4.setBold(false);
-        font4.setWeight(50);
-        checkBox->setFont(font4);
+        Bug = new QCheckBox(tab1);
+        Bug->setObjectName(QString::fromUtf8("Bug"));
+        QFont font5;
+        font5.setFamily(QString::fromUtf8("MV Boli"));
+        font5.setPointSize(10);
+        font5.setBold(false);
+        font5.setWeight(50);
+        Bug->setFont(font5);
 
-        gridLayout_3->addWidget(checkBox, 0, 1, 1, 1);
+        gridLayout_3->addWidget(Bug, 0, 1, 1, 1);
 
         tabWidget->addTab(tab1, QString());
         tab_3 = new QWidget();
@@ -377,6 +380,17 @@ public:
         verticalLayout_6->addWidget(tabWidget);
 
         MainWindow->setCentralWidget(centralwidget);
+        QWidget::setTabOrder(X0, Y0);
+        QWidget::setTabOrder(Y0, X);
+        QWidget::setTabOrder(X, N);
+        QWidget::setTabOrder(N, euler);
+        QWidget::setTabOrder(euler, checkBox_2);
+        QWidget::setTabOrder(checkBox_2, checkBox_3);
+        QWidget::setTabOrder(checkBox_3, exact);
+        QWidget::setTabOrder(exact, Bug);
+        QWidget::setTabOrder(Bug, tabWidget);
+        QWidget::setTabOrder(tabWidget, pushButton_3);
+        QWidget::setTabOrder(pushButton_3, verticalSlider);
 
         retranslateUi(MainWindow);
 
@@ -423,7 +437,7 @@ public:
         label_10->setText(QApplication::translate("MainWindow", "<html><head/><body><p style=\"line-height:0.2\">Main graph</p><p>(Black)</p></body></html>", nullptr));
         exact->setText(QString());
         label_5->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">Differential equation: y</span><span style=\" font-size:12pt; vertical-align:super;\">'</span><span style=\" font-size:12pt;\">= -y</span><span style=\" font-size:12pt; vertical-align:super;\">2</span><span style=\" font-size:12pt;\">/3 -2/(3x</span><span style=\" font-size:12pt; vertical-align:super;\">2</span><span style=\" font-size:12pt;\">)</span></p></body></html>", nullptr));
-        checkBox->setText(QApplication::translate("MainWindow", "Buggy features", nullptr));
+        Bug->setText(QApplication::translate("MainWindow", "Buggy Features", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab1), QApplication::translate("MainWindow", "Main graph", nullptr));
         label_11->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
         pushButton_3->setText(QApplication::translate("MainWindow", "PushButton", nullptr));

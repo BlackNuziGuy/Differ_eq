@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[11];
-    char stringdata0[149];
+    char stringdata0[144];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -41,13 +41,13 @@ QT_MOC_LITERAL(6, 60, 17), // "on_Y0_textChanged"
 QT_MOC_LITERAL(7, 78, 16), // "on_X_textChanged"
 QT_MOC_LITERAL(8, 95, 16), // "on_N_textChanged"
 QT_MOC_LITERAL(9, 112, 16), // "on_euler_toggled"
-QT_MOC_LITERAL(10, 129, 19) // "on_checkBox_toggled"
+QT_MOC_LITERAL(10, 129, 14) // "on_Bug_toggled"
 
     },
     "MainWindow\0on_exact_toggled\0\0checked\0"
     "on_X0_textChanged\0arg1\0on_Y0_textChanged\0"
     "on_X_textChanged\0on_N_textChanged\0"
-    "on_euler_toggled\0on_checkBox_toggled"
+    "on_euler_toggled\0on_Bug_toggled"
 };
 #undef QT_MOC_LITERAL
 
@@ -97,7 +97,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 3: _t->on_X_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 4: _t->on_N_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 5: _t->on_euler_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 6: _t->on_checkBox_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 6: _t->on_Bug_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
         }
     }

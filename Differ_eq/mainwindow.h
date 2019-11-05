@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <main_graph.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -13,6 +13,8 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    Main_Graph *MGraph;
+
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void do_stuff();
@@ -29,15 +31,12 @@ private slots:
 
     void on_N_textChanged(const QString &arg1);
 
-//    void on_lineEdit_textChanged(const QString &arg1);
-
     void on_euler_toggled(bool checked);
 
-    void on_checkBox_toggled(bool checked);
+    void on_Bug_toggled(bool checked);
 
 private:
-    void Set_Theme();
-    void Set_Appearance(Ui::MainWindow *ui);
+    void Set_Appearance();
     Ui::MainWindow *ui;
 
 
