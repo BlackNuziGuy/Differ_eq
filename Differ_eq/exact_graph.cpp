@@ -33,8 +33,13 @@ void Exact_Graph::Calculate(double x0, double y0, double X, int N){
 
 //    graph->graph()->selectTest()
 
-    int i1 = 0,i2 = 0;
+    int i1 = 0,i2 = 0; //Account for Gaps
+
     N = (int) 3000; //For best precision ("PUREST Kostil"
+
+    if ( (X-x0) > 50)
+        N = ( (X-x0) > 100)? 5000:3100;
+
     double h = (X-x0)/N; //step
 
     double c,x_v;

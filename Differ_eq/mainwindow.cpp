@@ -35,7 +35,7 @@ void MainWindow::Set_Appearance(Ui::MainWindow *ui){
     ui->X0->setValidator(sas);
     ui->Y0->setValidator(sas);
 
-    ui->N->setValidator(new QIntValidator(1,99000));
+    ui->N->setValidator(new QIntValidator(1,99999));
 
     ui->exact->setEnabled(false);
     ui->euler->setEnabled(false);
@@ -54,6 +54,9 @@ MainWindow::MainWindow(QWidget *parent)
     Set_Appearance(ui);
 
     MGraph.AddGraph(ui->Main_graph);
+    MGraph.graph->xAxis->setLabel("x");
+    MGraph.graph->yAxis->setLabel("y");
+    //ADD LEGEND
 
 //    connect(MGraph.graph, MGraph.graph->graph(0)->selected(), ui->TEST, ui->TEST->setText())
 
@@ -62,6 +65,16 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_checkBox_toggled(bool checked)
+{
+    if (checked)
+        MGraph.graph->setInteractions(MGraph.graph->interactions() | QCP::iRangeDrag);
+    else
+        MGraph.graph->setInteractions(MGraph.graph->interactions() ^ QCP::iRangeDrag);
+
+    MGraph.graph->setInteraction(QCP::iRangeZoom,checked);
 }
 
 
@@ -91,6 +104,7 @@ void MainWindow::do_stuff(){
         MGraph.euler.Visibile(true);
 
         MGraph.Zoom(X0, X);
+//        MGraph.graph->yAxis->rescale(true);
 
 
         ui->exact->setEnabled(true);
@@ -166,4 +180,3 @@ void MainWindow::on_X_textChanged(const QString &arg1)
 
 
 }
-

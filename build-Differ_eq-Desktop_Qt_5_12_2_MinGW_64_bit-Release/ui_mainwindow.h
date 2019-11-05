@@ -58,6 +58,7 @@ public:
     QGridLayout *gridLayout_2;
     QCustomPlot *Main_graph;
     QLabel *label_5;
+    QCheckBox *checkBox;
     QWidget *tab_3;
     QHBoxLayout *horizontalLayout_3;
     QVBoxLayout *verticalLayout_3;
@@ -219,6 +220,7 @@ public:
         font3.setPointSize(14);
         euler->setFont(font3);
         euler->setMouseTracking(false);
+        euler->setIconSize(QSize(14, 19));
         euler->setChecked(false);
         euler->setTristate(false);
 
@@ -305,6 +307,17 @@ public:
         label_5->setAlignment(Qt::AlignCenter);
 
         gridLayout_3->addWidget(label_5, 0, 0, 1, 1);
+
+        checkBox = new QCheckBox(tab1);
+        checkBox->setObjectName(QString::fromUtf8("checkBox"));
+        QFont font4;
+        font4.setFamily(QString::fromUtf8("MV Boli"));
+        font4.setPointSize(10);
+        font4.setBold(false);
+        font4.setWeight(50);
+        checkBox->setFont(font4);
+
+        gridLayout_3->addWidget(checkBox, 0, 1, 1, 1);
 
         tabWidget->addTab(tab1, QString());
         tab_3 = new QWidget();
@@ -407,9 +420,10 @@ public:
         checkBox_2->setText(QString());
         label_9->setText(QApplication::translate("MainWindow", "<html><head/><body><p style=\"line-height:0.2\">Runge-Kutta </p><p>(Green)</p></body></html>", nullptr));
         checkBox_3->setText(QString());
-        label_10->setText(QApplication::translate("MainWindow", "<html><head/><body><p style=\"line-height:0.2\">Main graph</p><p>(Blue)</p></body></html>", nullptr));
+        label_10->setText(QApplication::translate("MainWindow", "<html><head/><body><p style=\"line-height:0.2\">Main graph</p><p>(Black)</p></body></html>", nullptr));
         exact->setText(QString());
         label_5->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">Differential equation: y</span><span style=\" font-size:12pt; vertical-align:super;\">'</span><span style=\" font-size:12pt;\">= -y</span><span style=\" font-size:12pt; vertical-align:super;\">2</span><span style=\" font-size:12pt;\">/3 -2/(3x</span><span style=\" font-size:12pt; vertical-align:super;\">2</span><span style=\" font-size:12pt;\">)</span></p></body></html>", nullptr));
+        checkBox->setText(QApplication::translate("MainWindow", "Buggy features", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab1), QApplication::translate("MainWindow", "Main graph", nullptr));
         label_11->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
         pushButton_3->setText(QApplication::translate("MainWindow", "PushButton", nullptr));

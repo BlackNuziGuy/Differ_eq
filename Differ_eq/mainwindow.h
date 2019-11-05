@@ -33,6 +33,8 @@ private slots:
 
     void on_euler_toggled(bool checked);
 
+    void on_checkBox_toggled(bool checked);
+
 private:
     void Set_Theme();
     void Set_Appearance(Ui::MainWindow *ui);
