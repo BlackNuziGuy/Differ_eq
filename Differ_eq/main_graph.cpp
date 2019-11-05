@@ -13,7 +13,7 @@ void Main_Graph::AddGraph(QCustomPlot *element)
 {
 
     graph = element;
-    graph->setInteraction(QCP::iSelectPlottables, true);
+//    graph->setInteraction(QCP::iSelectPlottables, true);
 //    graph->setInteractions(graph->interactions() | QCP::iRangeDrag);
 //    graph->setInteraction(QCP::iRangeZoom,true);
 //    graph->xAxis->ticker()->setTickStepStrategy( QCPAxisTicker::tssReadability);
