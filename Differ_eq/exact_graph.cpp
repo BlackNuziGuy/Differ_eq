@@ -137,6 +137,7 @@ void Exact_Graph::Calculate(double x0, double y0, double X, int N){
     // create graphs and assign data to them:
     graph->addGraph();
     graph->graph(0)->setAntialiased(false);
+    graph->graph(0)->setPen(QPen(QColor(0,0,0,255) ) ) ;
 //    graph->graph(0)->setLineStyle(QCPGraph::lsStepCenter);
 
 
