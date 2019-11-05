@@ -1,0 +1,11 @@
+debug/euler.o
+debug/exact_graph.o
+debug/imp_euler.o
+debug/kunkka.o
+debug/main.o
+debug/main_graph.o
+debug/mainwindow.o
+debug/qcustomplot.o
+debug/qrc_style.o
+debug/moc_mainwindow.o
+debug/moc_qcustomplot.o
