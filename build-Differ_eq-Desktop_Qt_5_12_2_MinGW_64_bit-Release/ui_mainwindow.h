@@ -39,11 +39,11 @@ public:
     QWidget *tab1;
     QGridLayout *gridLayout_3;
     QFormLayout *formLayout_2;
-    QLabel *label;
+    QLabel *label_X0;
     QLineEdit *X0;
     QLabel *label_2;
     QLineEdit *Y0;
-    QLabel *label_3;
+    QLabel *label_X;
     QLineEdit *X;
     QLabel *label_4;
     QLineEdit *N;
@@ -115,24 +115,24 @@ public:
         formLayout_2 = new QFormLayout();
         formLayout_2->setObjectName(QString::fromUtf8("formLayout_2"));
         formLayout_2->setFormAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-        label = new QLabel(tab1);
-        label->setObjectName(QString::fromUtf8("label"));
+        label_X0 = new QLabel(tab1);
+        label_X0->setObjectName(QString::fromUtf8("label_X0"));
         QSizePolicy sizePolicy1(QSizePolicy::Maximum, QSizePolicy::Minimum);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy1);
-        label->setMaximumSize(QSize(50, 50));
+        sizePolicy1.setHeightForWidth(label_X0->sizePolicy().hasHeightForWidth());
+        label_X0->setSizePolicy(sizePolicy1);
+        label_X0->setMaximumSize(QSize(50, 50));
         QFont font2;
         font2.setPointSize(16);
-        label->setFont(font2);
-        label->setTextFormat(Qt::RichText);
-        label->setScaledContents(true);
-        label->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
-        label->setWordWrap(false);
-        label->setIndent(20);
+        label_X0->setFont(font2);
+        label_X0->setTextFormat(Qt::RichText);
+        label_X0->setScaledContents(true);
+        label_X0->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_X0->setWordWrap(false);
+        label_X0->setIndent(20);
 
-        formLayout_2->setWidget(0, QFormLayout::LabelRole, label);
+        formLayout_2->setWidget(0, QFormLayout::LabelRole, label_X0);
 
         X0 = new QLineEdit(tab1);
         X0->setObjectName(QString::fromUtf8("X0"));
@@ -167,16 +167,17 @@ public:
 
         formLayout_2->setWidget(1, QFormLayout::FieldRole, Y0);
 
-        label_3 = new QLabel(tab1);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        sizePolicy1.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
-        label_3->setSizePolicy(sizePolicy1);
-        label_3->setMaximumSize(QSize(50, 50));
-        label_3->setFont(font2);
-        label_3->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
-        label_3->setIndent(20);
+        label_X = new QLabel(tab1);
+        label_X->setObjectName(QString::fromUtf8("label_X"));
+        sizePolicy1.setHeightForWidth(label_X->sizePolicy().hasHeightForWidth());
+        label_X->setSizePolicy(sizePolicy1);
+        label_X->setMaximumSize(QSize(50, 50));
+        label_X->setFont(font2);
+        label_X->setTextFormat(Qt::RichText);
+        label_X->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_X->setIndent(20);
 
-        formLayout_2->setWidget(2, QFormLayout::LabelRole, label_3);
+        formLayout_2->setWidget(2, QFormLayout::LabelRole, label_X);
 
         X = new QLineEdit(tab1);
         X->setObjectName(QString::fromUtf8("X"));
@@ -408,7 +409,7 @@ public:
 #ifndef QT_NO_TOOLTIP
         tab1->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
-        label->setText(QApplication::translate("MainWindow", "<html><head/><body><p>	X<span style=\" vertical-align:sub;\">0</span></p></body></html>", nullptr));
+        label_X0->setText(QApplication::translate("MainWindow", "<html><head/><body><p>	X<span style=\" vertical-align:sub;\">0</span></p></body></html>", nullptr));
 #ifndef QT_NO_TOOLTIP
         X0->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
@@ -416,7 +417,7 @@ public:
 #ifndef QT_NO_TOOLTIP
         Y0->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
-        label_3->setText(QApplication::translate("MainWindow", "X", nullptr));
+        label_X->setText(QApplication::translate("MainWindow", "X", nullptr));
 #ifndef QT_NO_TOOLTIP
         X->setToolTip(QString());
 #endif // QT_NO_TOOLTIP

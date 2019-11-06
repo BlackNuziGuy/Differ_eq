@@ -12,7 +12,6 @@ public:
     double func(double x, double c);
 
     void Visibile(bool x);
-
 };
 
 #endif // EXACT_GRAPH_H

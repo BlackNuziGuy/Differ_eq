@@ -17,10 +17,16 @@ void MainWindow::Set_Appearance(){
 
 
     //Filter input
-    QDoubleValidator *sas = new QDoubleValidator(-100, 100, 3);
+    QDoubleValidator *sas = new QDoubleValidator(-100, 100, 2);
+    sas->setDecimals(3);
+
     ui->X->setValidator(sas);
+    ui->X->setMaxLength(6);
     ui->X0->setValidator(sas);
+    ui->X0->setMaxLength(6);
     ui->Y0->setValidator(sas);
+    ui->Y0->setMaxLength(6);
+
     ui->N->setValidator(new QIntValidator(1,99999));
 
 
@@ -56,6 +62,7 @@ MainWindow::MainWindow(QWidget *parent)
     //Add function that connects
     //Change on_text_change_func
     //Add the feature to display value
+    //Add threads
     //    qDebug("X: %f",graph->xAxis->pixelToCoord( (QCursor::pos()).x() ));
     //    graph->graph()->selectTest()
 
@@ -92,7 +99,16 @@ void MainWindow::on_exact_toggled(bool checked)
 
 void MainWindow::do_stuff(){
 
+
+
+
     if (X0_f && Y0_f && N_f && X_f && X>X0){
+
+        QString text = "<html><head/><body><p>	X<span style=\" vertical-align:sub;\">0</span></p></body></html>";
+        ui->label_X0->setText("<font color=#ffffff>"+text+"</font>");
+        ui->label_X->setText("<font color=#ffffff>X</font>");
+
+
 
         if (X0 == 1.0 && Y0 == 4.0 && X == 8.0 && N == 8.0 )
             ui->Bug->setEnabled(true);
@@ -111,8 +127,17 @@ void MainWindow::do_stuff(){
 
         ui->euler->setEnabled(true);
         ui->euler->setChecked(true);
+
     }
     else{
+
+        if (X0_f && X_f && X<=X0){
+
+            QString text = "<html><head/><body><p>	X<span style=\" vertical-align:sub;\">0</span></p></body></html>";
+            ui->label_X0->setText("<font color=#ff0000>"+text+"</font>");
+            ui->label_X->setText("<font color=#ff0000>X</font>");
+        }
+
         ui->euler->setDisabled(true);
         ui->exact->setDisabled(true);
     }

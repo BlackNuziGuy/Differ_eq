@@ -25,6 +25,9 @@ Main_Graph::Main_Graph(QCustomPlot * element) : euler(element), exact(element)
 void Main_Graph::Zoom(double x1, double x2, double y)
 {
     // set axes ranges, so we see all data:
+
+
+    //Cheange X calcuation!!
     graph->xAxis->setRange((x1 > 0)? -1:x1 , x2);
 
     y = abs(y);

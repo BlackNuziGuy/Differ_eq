@@ -8,11 +8,13 @@ class Graph
 {
 
 public:
+//    virtual ~Graph();
+
     QCustomPlot *graph;
 
-    virtual void Calculate(double, double, double , int);
+    virtual void Calculate(double, double, double , int) = 0;
     double func(double x, double c);
-
+    virtual void Visibile(bool x) = 0;
 
 
     double round_nplaces(double value, int to){
@@ -23,7 +25,6 @@ public:
         return (fabs(A - B) < epsilon);
     }
 
-    void Visibile(bool x);
 };
 
 

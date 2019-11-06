@@ -30,7 +30,6 @@ private slots:
     void on_euler_toggled(bool checked);
     void on_exact_toggled(bool checked);
 
-
     void on_Bug_toggled(bool checked);
 
 private:
