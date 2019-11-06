@@ -20,7 +20,7 @@ RESOURCES += qdarkstyle/style.qrc
 
 SOURCES += \
     euler.cpp \
-    exact_graph.cpp \
+    exact.cpp \
     imp_euler.cpp \
     kunkka.cpp \
     main.cpp \
@@ -31,7 +31,7 @@ SOURCES += \
 HEADERS += \
     Graph.h \
     euler.h \
-    exact_graph.h \
+    exact.h \
     imp_euler.h \
     kunkka.h \
     main_graph.h \

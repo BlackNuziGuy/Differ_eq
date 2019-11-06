@@ -1,5 +1,5 @@
 release/euler.o
-release/exact_graph.o
+release/exact.o
 release/imp_euler.o
 release/kunkka.o
 release/main.o

@@ -3,12 +3,6 @@
 #include <QString>
 
 
-double X0,Y0,X;
-int N;
-static bool X0_f = false,Y0_f = false,X_f = false,N_f = false;
-
-
-
 void MainWindow::Set_Appearance(){
 
     //Enable Dark Mode
@@ -40,6 +34,10 @@ void MainWindow::Set_Appearance(){
     ui->X0->setFocus();
 }
 
+//void MainWindow::Connect_Things()
+//{
+//    connect(ui->euler,SIGNAL(toggled(bool)), &(MGraph->euler), SLOT(Visibile(bool)));
+//}
 
 
 
@@ -49,14 +47,17 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->setupUi(this);
     Set_Appearance();
+//    Connect_Things();
 
-    MGraph = new Main_Graph(ui->Main_graph);
+    MGraph = new Main_Graph(ui->plotter);
 
 
-    //ADD LEGEND
+    //ADD LEGEND; Allow to choose graph by legend
     //Add function that connects
     //Change on_text_change_func
     //Add the feature to display value
+    //    qDebug("X: %f",graph->xAxis->pixelToCoord( (QCursor::pos()).x() ));
+    //    graph->graph()->selectTest()
 
 }
 
@@ -102,7 +103,7 @@ void MainWindow::do_stuff(){
         MGraph->euler.Calculate(X0, Y0, X, N);
 
 
-        MGraph->Zoom(X0, X);
+        MGraph->Zoom(X0, X,Y0);
 
 
         ui->exact->setEnabled(true);
@@ -130,7 +131,6 @@ void MainWindow::on_X0_textChanged(const QString &arg1)
         X0 = arg1.toDouble();
 
         do_stuff();
-
     }
 
 }

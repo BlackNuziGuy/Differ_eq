@@ -1,5 +1,5 @@
 debug/euler.o
-debug/exact_graph.o
+debug/exact.o
 debug/imp_euler.o
 debug/kunkka.o
 debug/main.o

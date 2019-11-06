@@ -1,0 +1,11 @@
+release/euler.o
+release/exact.o
+release/imp_euler.o
+release/kunkka.o
+release/main.o
+release/main_graph.o
+release/mainwindow.o
+release/qcustomplot.o
+release/qrc_style.o
+release/moc_mainwindow.o
+release/moc_qcustomplot.o

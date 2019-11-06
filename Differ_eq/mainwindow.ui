@@ -478,7 +478,7 @@
         <item row="1" column="0">
          <layout class="QGridLayout" name="gridLayout_2">
           <item row="0" column="0">
-           <widget class="QCustomPlot" name="Main_graph" native="true">
+           <widget class="QCustomPlot" name="plotter" native="true">
             <property name="enabled">
              <bool>true</bool>
             </property>

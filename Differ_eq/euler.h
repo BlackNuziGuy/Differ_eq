@@ -11,9 +11,9 @@ public:
 
 
     void Calculate(double x0, double y0, double X, int N);
-    void Visibile(bool x);
     double func(double x, double c);
 
+    void Visibile(bool x);
 
 };
 

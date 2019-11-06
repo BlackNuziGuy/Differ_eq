@@ -56,7 +56,7 @@ public:
     QLabel *label_10;
     QCheckBox *exact;
     QGridLayout *gridLayout_2;
-    QCustomPlot *Main_graph;
+    QCustomPlot *plotter;
     QLabel *label_5;
     QCheckBox *Bug;
     QWidget *tab_3;
@@ -289,17 +289,17 @@ public:
 
         gridLayout_2 = new QGridLayout();
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        Main_graph = new QCustomPlot(tab1);
-        Main_graph->setObjectName(QString::fromUtf8("Main_graph"));
-        Main_graph->setEnabled(true);
+        plotter = new QCustomPlot(tab1);
+        plotter->setObjectName(QString::fromUtf8("plotter"));
+        plotter->setEnabled(true);
         QSizePolicy sizePolicy5(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
         sizePolicy5.setHorizontalStretch(0);
         sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(Main_graph->sizePolicy().hasHeightForWidth());
-        Main_graph->setSizePolicy(sizePolicy5);
-        Main_graph->setCursor(QCursor(Qt::CrossCursor));
+        sizePolicy5.setHeightForWidth(plotter->sizePolicy().hasHeightForWidth());
+        plotter->setSizePolicy(sizePolicy5);
+        plotter->setCursor(QCursor(Qt::CrossCursor));
 
-        gridLayout_2->addWidget(Main_graph, 0, 0, 1, 1);
+        gridLayout_2->addWidget(plotter, 0, 0, 1, 1);
 
 
         gridLayout_3->addLayout(gridLayout_2, 1, 0, 1, 1);

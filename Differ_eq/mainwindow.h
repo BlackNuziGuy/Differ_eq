@@ -13,15 +13,11 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    Main_Graph *MGraph;
 
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void do_stuff();
-
 
 private slots:
-    void on_exact_toggled(bool checked);
 
     void on_X0_textChanged(const QString &arg1);
 
@@ -32,12 +28,23 @@ private slots:
     void on_N_textChanged(const QString &arg1);
 
     void on_euler_toggled(bool checked);
+    void on_exact_toggled(bool checked);
+
 
     void on_Bug_toggled(bool checked);
 
 private:
-    void Set_Appearance();
     Ui::MainWindow *ui;
+    Main_Graph *MGraph;
+    double X0,Y0,X;
+    int N;
+    bool X0_f = false,Y0_f = false,X_f = false,N_f = false;
+
+
+
+    void Set_Appearance();
+    void do_stuff();
+//    void Connect_Things();
 
 
 };
