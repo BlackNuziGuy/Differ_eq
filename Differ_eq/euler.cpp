@@ -1,28 +1,11 @@
 #include "euler.h"
 
+Euler::Euler(QCustomPlot * gr) : Graph(gr){graph->setPen(color());}
+QColor Euler::color(){  return QColor(255,87,51);}
+double Euler::func(double x, double y){return ( -y*y/3 - 2.0/(3*x*x) );}
+double Euler::errorfunc(double xi, double xi_1, double y(double, double), double c){return ( y(xi_1,c) - y(xi,c) - (xi_1 - xi)*func(xi, y(xi,c) ) );}
+void Euler::visible(bool x){ graph->setVisible(x);}
 
-
-Euler::Euler(QCustomPlot * gr) : Graph(gr)
-{
-    graph->setPen(QPen(color()));
-}
-
-
-
-double Euler::func(double x, double y)
-{
-    return ( -y*y/3 - 2.0/(3*x*x) );
-}
-
-
-double Euler::errorfunc(double xi, double xi_1, double y(double, double), double c)
-{
-    return ( y(xi_1,c) - y(xi,c) - (xi_1 - xi)*func(xi, y(xi,c) ) );
-}
-
-QColor Euler::color(){
-    return QColor(255,87,51);
-}
 
 void Euler::Calculate(double x0, double y0, double X, int N){
 
@@ -43,13 +26,4 @@ void Euler::Calculate(double x0, double y0, double X, int N){
     }
 
     graph->setData(x, y);
-
 }
-
-void Euler::visible(bool x){
-
-    graph->setVisible(x);
-
-
-}
-

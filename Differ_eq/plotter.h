@@ -2,8 +2,8 @@
 #define PLOTTER_H
 #include <qcustomplot.h>
 
-class Plotter
-{
+class Plotter{
+
 public:
     QCustomPlot* grid;
 
@@ -15,9 +15,10 @@ public:
         grid->xAxis->setLabel("x");
         grid->yAxis->setLabel("y");
     }
+//    virtual ~Plotter();
 
-    void Zoom(double, double, double);
-    void Caculate_all(double x0, double y0, double X, int N);
+
+    virtual void Zoom(double, double, double) = 0;
+    virtual void Caculate_all(double x0, double y0, double X, int N) = 0;
 };
-
 #endif // PLOTTER_H

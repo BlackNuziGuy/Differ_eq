@@ -2,14 +2,10 @@
 #include <math.h>
 #include <QMainWindow>
 
-Main_Plotter::Main_Plotter(QCustomPlot * element) : Plotter(element)
-{
-    //Add other ones later; Remember order for the "visible" toggle function
-
+Main_Plotter::Main_Plotter(QCustomPlot * element) : Plotter(element){
+    //Add other ones later; REMEMBER the order for the "visible" toggle functions
     to_plot = {new Exact(element), new Euler(element) };
-
 }
-
 
 void Main_Plotter::Zoom(double x1, double x2, double y)
 {
@@ -23,9 +19,7 @@ void Main_Plotter::Zoom(double x1, double x2, double y)
 }
 
 
-//USING OOP, but weird....!!!!
-void Main_Plotter::Caculate_all(double x0, double y0, double X, int N)
-{
+void Main_Plotter::Caculate_all(double x0, double y0, double X, int N){
 
     for (auto gr : to_plot ){
         gr->Calculate(x0, y0, X, N);

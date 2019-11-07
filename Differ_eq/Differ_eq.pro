@@ -28,7 +28,7 @@ SOURCES += \
     main_plotter.cpp \
     mainwindow.cpp \
     qcustomplot.cpp \
-    toterror_graph.cpp
+    toterror_plotter.cpp
 
 HEADERS += \
     Graph.h \
@@ -41,7 +41,7 @@ HEADERS += \
     mainwindow.h \
     plotter.h \
     qcustomplot.h \
-    toterror_graph.h
+    toterror_plotter.h
 
 FORMS += \
     mainwindow.ui

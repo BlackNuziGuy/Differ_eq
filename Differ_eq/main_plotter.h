@@ -14,8 +14,11 @@ public:
     QVector<Graph*>to_plot;
 
 
-
     Main_Plotter(QCustomPlot *element);
+//    virtual ~Main_Plotter();
+
+
+
     void Zoom(double, double, double);
     void Caculate_all(double x0, double y0, double X, int N);
 };

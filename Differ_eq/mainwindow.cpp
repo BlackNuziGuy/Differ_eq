@@ -116,12 +116,12 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
 
     //ADD LEGEND; Allow to choose graph by legend
     //Add threads
-
     //Add an ability to show 'precise' value
     //    qDebug("X: %f",graph->xAxis->pixelToCoord( (QCursor::pos()).x() ));
     //    graph->graph()->selectTest()
 }
 MainWindow::~MainWindow(){delete ui;}
+
 
 //Use the index from MPlot constructor for graphs with errors
 void MainWindow::on_euler_toggled(bool checked){set_graph_visibility(1, checked);}
@@ -142,7 +142,6 @@ void MainWindow::on_Bug_toggled(bool checked)
         Plot->grid->setInteraction(QCP::iSelectPlottables, checked);//Selection
     }
 }
-
 
 
 void MainWindow::on_X0_textChanged(const QString &arg1){change_value(&X0_f,&X0,arg1);}
