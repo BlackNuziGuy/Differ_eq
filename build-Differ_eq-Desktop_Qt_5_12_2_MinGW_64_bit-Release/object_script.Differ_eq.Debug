@@ -1,11 +1,13 @@
+debug/error_plotter.o
 debug/euler.o
 debug/exact.o
 debug/imp_euler.o
 debug/kunkka.o
 debug/main.o
-debug/main_graph.o
+debug/main_plotter.o
 debug/mainwindow.o
 debug/qcustomplot.o
+debug/toterror_graph.o
 debug/qrc_style.o
 debug/moc_mainwindow.o
 debug/moc_qcustomplot.o

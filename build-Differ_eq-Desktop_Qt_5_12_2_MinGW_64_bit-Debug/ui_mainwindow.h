@@ -18,7 +18,6 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QVBoxLayout>
@@ -64,9 +63,8 @@ public:
     QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout;
     QLabel *label_11;
-    QPushButton *pushButton_3;
     QHBoxLayout *horizontalLayout_4;
-    QCustomPlot *widget;
+    QCustomPlot *eplotter;
     QSlider *verticalSlider;
     QCustomPlot *widget_2;
 
@@ -339,23 +337,17 @@ public:
 
         horizontalLayout->addWidget(label_11);
 
-        pushButton_3 = new QPushButton(tab_3);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setMaximumSize(QSize(20, 20));
-
-        horizontalLayout->addWidget(pushButton_3);
-
 
         verticalLayout_3->addLayout(horizontalLayout);
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        widget = new QCustomPlot(tab_3);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        sizePolicy5.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
-        widget->setSizePolicy(sizePolicy5);
+        eplotter = new QCustomPlot(tab_3);
+        eplotter->setObjectName(QString::fromUtf8("eplotter"));
+        sizePolicy5.setHeightForWidth(eplotter->sizePolicy().hasHeightForWidth());
+        eplotter->setSizePolicy(sizePolicy5);
 
-        horizontalLayout_4->addWidget(widget);
+        horizontalLayout_4->addWidget(eplotter);
 
         verticalSlider = new QSlider(tab_3);
         verticalSlider->setObjectName(QString::fromUtf8("verticalSlider"));
@@ -390,8 +382,7 @@ public:
         QWidget::setTabOrder(checkBox_3, exact);
         QWidget::setTabOrder(exact, Bug);
         QWidget::setTabOrder(Bug, tabWidget);
-        QWidget::setTabOrder(tabWidget, pushButton_3);
-        QWidget::setTabOrder(pushButton_3, verticalSlider);
+        QWidget::setTabOrder(tabWidget, verticalSlider);
 
         retranslateUi(MainWindow);
 
@@ -438,10 +429,9 @@ public:
         label_10->setText(QApplication::translate("MainWindow", "<html><head/><body><p style=\"line-height:0.2\">Main graph</p><p>(Black)</p></body></html>", nullptr));
         exact->setText(QString());
         label_5->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">Differential equation: y</span><span style=\" font-size:12pt; vertical-align:super;\">'</span><span style=\" font-size:12pt;\">= -y</span><span style=\" font-size:12pt; vertical-align:super;\">2</span><span style=\" font-size:12pt;\">/3 -2/(3x</span><span style=\" font-size:12pt; vertical-align:super;\">2</span><span style=\" font-size:12pt;\">)</span></p></body></html>", nullptr));
-        Bug->setText(QApplication::translate("MainWindow", "Buggy Features", nullptr));
+        Bug->setText(QApplication::translate("MainWindow", "Graph interactions", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab1), QApplication::translate("MainWindow", "Main graph", nullptr));
         label_11->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
-        pushButton_3->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("MainWindow", "Error graphs", nullptr));
     } // retranslateUi
 

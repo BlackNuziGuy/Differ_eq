@@ -19,24 +19,29 @@ RESOURCES += qdarkstyle/style.qrc
 
 
 SOURCES += \
+    error_plotter.cpp \
     euler.cpp \
     exact.cpp \
     imp_euler.cpp \
     kunkka.cpp \
     main.cpp \
-    main_graph.cpp \
+    main_plotter.cpp \
     mainwindow.cpp \
-    qcustomplot.cpp
+    qcustomplot.cpp \
+    toterror_graph.cpp
 
 HEADERS += \
     Graph.h \
+    error_plotter.h \
     euler.h \
     exact.h \
     imp_euler.h \
     kunkka.h \
-    main_graph.h \
+    main_plotter.h \
     mainwindow.h \
-    qcustomplot.h
+    plotter.h \
+    qcustomplot.h \
+    toterror_graph.h
 
 FORMS += \
     mainwindow.ui

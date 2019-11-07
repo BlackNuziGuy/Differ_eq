@@ -7,13 +7,21 @@
 class Graph
 {
 
-public:
-//    virtual ~Graph();
 
-    QCustomPlot *graph;
+public:
+
+    QCPGraph *graph;
+
+    Graph(QCustomPlot *gr){
+
+        graph = gr->addGraph();
+    }
+
+//    virtual ~Graph();
 
     virtual void Calculate(double, double, double , int) = 0;
     double func(double x, double c);
+    virtual double errorfunc(double xi, double xi_1, double y(double, double), double c) = 0;
     virtual void Visibile(bool x) = 0;
 
 

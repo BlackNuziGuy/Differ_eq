@@ -1,0 +1,26 @@
+#include "error_graph.h"
+
+Error_graph::Error_graph(Main_Plotter *gr)
+{
+
+    graph->addGraph();
+    graph->addGraph();
+    graph->addGraph();
+
+    exact = gr->exact.graph;
+    euler = gr->euler.graph;
+
+}
+
+
+void Error_graph::CalcErrors(){
+
+    //Start from exact[0]
+    //Apply step from euler[1]-euler[0]
+    double x0 = exact->data().k
+
+    for(int i = 0; i<exact.data()->size(); i++){
+
+    }
+
+}
