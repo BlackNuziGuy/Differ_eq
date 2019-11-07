@@ -13,16 +13,17 @@ public:
     QCPGraph *graph;
 
     Graph(QCustomPlot *gr){
-
         graph = gr->addGraph();
     }
 
 //    virtual ~Graph();
 
+    virtual QColor color() = 0;//{ return QColor(77,70,0);}
+
     virtual void Calculate(double, double, double , int) = 0;
-    double func(double x, double c);
+    virtual double func(double x, double c) = 0;
     virtual double errorfunc(double xi, double xi_1, double y(double, double), double c) = 0;
-    virtual void Visibile(bool x) = 0;
+    virtual void visible(bool x) = 0;
 
 
     double round_nplaces(double value, int to){

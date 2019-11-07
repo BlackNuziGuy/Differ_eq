@@ -302,6 +302,7 @@ public:
         formLayout_2->setWidget(8, QFormLayout::LabelRole, label_7);
 
         horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setSpacing(0);
         horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Maximum, QSizePolicy::Minimum);
 

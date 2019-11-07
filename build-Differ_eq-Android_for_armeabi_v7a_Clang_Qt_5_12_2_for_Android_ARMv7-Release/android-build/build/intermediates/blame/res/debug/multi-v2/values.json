@@ -1,0 +1,45 @@
+{
+    "logs": [
+        {
+            "outputFile": "G:\\Programming\\Qt_projects\\Differ_eq\\build-Differ_eq-Android_for_armeabi_v7a_Clang_Qt_5_12_2_for_Android_ARMv7-Release\\android-build\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "map": [
+                {
+                    "source": "G:\\Qt\\5.12.2\\android_armv7\\src\\android\\java\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "5,4,3,6",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "324,201,88,433",
+                        "endColumns": "107,121,111,84",
+                        "endOffsets": "427,318,195,513"
+                    },
+                    "to": {
+                        "startLines": "32,33,34,35",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "1350,1458,1580,1692",
+                        "endColumns": "107,121,111,84",
+                        "endOffsets": "1453,1575,1687,1772"
+                    }
+                },
+                {
+                    "source": "G:\\Programming\\Qt_projects\\Differ_eq\\build-Differ_eq-Android_for_armeabi_v7a_Clang_Qt_5_12_2_for_Android_ARMv7-Release\\android-build\\res\\values\\libs.xml",
+                    "from": {
+                        "startLines": "35,22,9,13,2",
+                        "startColumns": "4,4,4,5,4",
+                        "startOffsets": "1435,534,300,360,57",
+                        "endLines": "37,34,11,20,4",
+                        "endColumns": "12,12,12,13,12",
+                        "endOffsets": "1491,1429,351,526,169"
+                    },
+                    "to": {
+                        "startLines": "2,5,18,21,29",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "55,114,1012,1066,1235",
+                        "endLines": "4,17,20,28,31",
+                        "endColumns": "12,12,12,13,12",
+                        "endOffsets": "109,1007,1061,1230,1345"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -9,13 +9,13 @@ class Euler : public Graph
 public:
 
     Euler(QCustomPlot *);
-
+    QColor color();
 
     void Calculate(double x0, double y0, double X, int N);
     double func(double x, double c);
     double errorfunc(double xi, double xi_1, double y(double, double), double c);
 
-    void Visibile(bool x);
+    void visible(bool x);
 
 };
 

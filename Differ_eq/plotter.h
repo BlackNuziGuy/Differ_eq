@@ -5,15 +5,15 @@
 class Plotter
 {
 public:
-    QCustomPlot* graph;
+    QCustomPlot* grid;
 
     Plotter(QCustomPlot *element){
-        graph = element;
+        grid = element;
 
         //Set interactions and appearance
-        graph->xAxis->ticker()->setTickStepStrategy( QCPAxisTicker::tssReadability);
-        graph->xAxis->setLabel("x");
-        graph->yAxis->setLabel("y");
+        grid->xAxis->ticker()->setTickStepStrategy( QCPAxisTicker::tssReadability);
+        grid->xAxis->setLabel("x");
+        grid->yAxis->setLabel("y");
     }
 
     void Zoom(double, double, double);

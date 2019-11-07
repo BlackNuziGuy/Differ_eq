@@ -11,7 +11,7 @@
 class Main_Plotter : public Plotter
 {
 public:
-    Graph *euler, *exact;
+    QVector<Graph*>to_plot;
 
 
 

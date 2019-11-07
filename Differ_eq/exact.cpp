@@ -3,12 +3,16 @@
 
 Exact::Exact(QCustomPlot * gr) : Graph(gr)
 {
+    graph->setPen(QPen(color()));//Yellowish
 }
 
-//USELESS BUT NECESSARY
+//USELESS BUT NECESSARY; VERY KOSTIL
 double Exact::errorfunc(double xi, double xi_1, double (*y)(double, double), double c){
+    return xi + xi_1 + y(0,0) + c;
+}
 
-    return NULL;
+QColor Exact::color(){
+    return (QColor( 0,0,0,255) );
 }
 
 double Exact::func( double x, double c){
@@ -59,12 +63,12 @@ void Exact::Calculate(double x0, double y0, double X, int N){
 
     //assign data
     graph->setData(x, y);
-    graph->setPen(QPen(QColor(0,0,0,255) ) ) ;//Black
+    graph->setPen(QPen( color() ) ) ;//Black
 
 
 }
 
 
-void Exact::Visibile(bool x){
+void Exact::visible(bool x){
     graph->setVisible(x);
 }

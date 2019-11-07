@@ -29,7 +29,6 @@ private slots:
     void on_exact_toggled(bool checked);
 
     void on_Bug_toggled(bool checked);
-
     void on_radio_error_toggled();
 
 private:
@@ -45,6 +44,8 @@ private:
 
     void Set_Appearance();
     void do_stuff();
+    void set_graph_visibility(int ind, bool c);
+    void change_value(bool*, double*, QString);
 //    void Connect_Things();
 
 

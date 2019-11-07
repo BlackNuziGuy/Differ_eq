@@ -4,7 +4,7 @@
 
 Euler::Euler(QCustomPlot * gr) : Graph(gr)
 {
-
+    graph->setPen(QPen(color()));
 }
 
 
@@ -20,6 +20,9 @@ double Euler::errorfunc(double xi, double xi_1, double y(double, double), double
     return ( y(xi_1,c) - y(xi,c) - (xi_1 - xi)*func(xi, y(xi,c) ) );
 }
 
+QColor Euler::color(){
+    return QColor(255,87,51);
+}
 
 void Euler::Calculate(double x0, double y0, double X, int N){
 
@@ -40,12 +43,10 @@ void Euler::Calculate(double x0, double y0, double X, int N){
     }
 
     graph->setData(x, y);
-    graph->setPen(QPen(QColor(255,87,51)));//Yellowish
-
 
 }
 
-void Euler::Visibile(bool x){
+void Euler::visible(bool x){
 
     graph->setVisible(x);
 

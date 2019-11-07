@@ -8,8 +8,9 @@
 class Error_Plotter : public Plotter
 {
 public: 
-    Graph *exact, *euler;
-    QCPGraph *eulerErr;
+    QVector<Graph*> graphs;
+    QVector<QCPGraph*> ergraphs;
+
 
     static double y( double x, double c){
        return (1/x + 1/(x + c*pow(pow(x,2),1/3.0)) );

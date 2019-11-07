@@ -39,65 +39,6 @@ void MainWindow::Set_Appearance(){
     ui->X0->setFocus();
 }
 
-
-
-
-MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow)
-{
-
-    ui->setupUi(this);
-    Set_Appearance();
-//    Connect_Things();
-
-    MPlot = new Main_Plotter(ui->plotter);
-    EPlot = new Error_Plotter(ui->eplotter, MPlot);
-
-
-    //ADD LEGEND; Allow to choose graph by legend
-    //Add function that connects??
-    //Change on_text_change_func
-    //Add threads
-    //Add an ability to show 'precise' value
-    //    qDebug("X: %f",graph->xAxis->pixelToCoord( (QCursor::pos()).x() ));
-    //    graph->graph()->selectTest()
-}
-
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
-
-
-void MainWindow::on_Bug_toggled(bool checked)
-{
-    Plotter *sas[] = {MPlot, EPlot};
-
-    for (auto Plot:sas){
-
-        //Drag
-        if (checked)
-            Plot->graph->setInteractions(Plot->graph->interactions() | QCP::iRangeDrag);
-        else
-            Plot->graph->setInteractions(Plot->graph->interactions() ^ QCP::iRangeDrag);
-
-
-        Plot->graph->setInteraction(QCP::iRangeZoom,checked); //Scale
-        Plot->graph->setInteraction(QCP::iSelectPlottables, checked);//Selection
-    }
-}
-
-
-void MainWindow::on_euler_toggled(bool checked)
-{
-    MPlot->euler->Visibile(checked);
-    MPlot->graph->replot();
-}
-void MainWindow::on_exact_toggled(bool checked)
-{
-    MPlot->exact->Visibile(checked);
-    MPlot->graph->replot();
-}
-
 void MainWindow::do_stuff(){
 
     if (X0_f && Y0_f && N_f && X_f && X>X0){
@@ -142,36 +83,71 @@ void MainWindow::do_stuff(){
 
 }
 
-void MainWindow::on_X0_textChanged(const QString &arg1)
-{
+void MainWindow::set_graph_visibility(int ind, bool c){
 
-    if (arg1.isEmpty()){
-        X0_f = false;
-    }
+    MPlot->to_plot[ind]->visible(c);
+    EPlot->ergraphs[ind -1]->setVisible(c);
+
+    MPlot->grid->replot();
+    EPlot->grid->replot();
+}
+
+void MainWindow::change_value(bool *b, double *v, QString arg1){
+    if (arg1.isEmpty())
+        *b = false;
     else{
-        X0_f = true;
-        X0 = arg1.toDouble();
+        *v = arg1.toDouble();
+        *b = true;
 
         do_stuff();
     }
-
 }
-void MainWindow::on_Y0_textChanged(const QString &arg1)
+
+
+
+MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow){
+
+    ui->setupUi(this);
+    Set_Appearance();
+
+    MPlot = new Main_Plotter(ui->plotter);
+    EPlot = new Error_Plotter(ui->eplotter, MPlot);
+
+
+    //ADD LEGEND; Allow to choose graph by legend
+    //Add threads
+
+    //Add an ability to show 'precise' value
+    //    qDebug("X: %f",graph->xAxis->pixelToCoord( (QCursor::pos()).x() ));
+    //    graph->graph()->selectTest()
+}
+MainWindow::~MainWindow(){delete ui;}
+
+//Use the index from MPlot constructor for graphs with errors
+void MainWindow::on_euler_toggled(bool checked){set_graph_visibility(1, checked);}
+void MainWindow::on_exact_toggled(bool checked){MPlot->to_plot[0]->visible(checked);MPlot->grid->replot();}
+void MainWindow::on_radio_error_toggled(){ui->stackedWidget->setCurrentIndex( !ui->stackedWidget->currentIndex() );}
+void MainWindow::on_Bug_toggled(bool checked)
 {
+    Plotter *sas[] = {MPlot, EPlot};
 
-    if (arg1.isEmpty()){
-        Y0_f = false;
+    for (auto Plot:sas){
+        //Drag
+        if (checked)
+            Plot->grid->setInteractions(Plot->grid->interactions() | QCP::iRangeDrag);
+        else
+            Plot->grid->setInteractions(Plot->grid->interactions() ^ QCP::iRangeDrag);
+
+        Plot->grid->setInteraction(QCP::iRangeZoom,checked); //Scale
+        Plot->grid->setInteraction(QCP::iSelectPlottables, checked);//Selection
     }
-    else{
-        Y0_f = true;
-        Y0 = arg1.toDouble();
-
-        do_stuff();
-
-
-    }
-
 }
+
+
+
+void MainWindow::on_X0_textChanged(const QString &arg1){change_value(&X0_f,&X0,arg1);}
+void MainWindow::on_Y0_textChanged(const QString &arg1){change_value(&Y0_f,&Y0,arg1);}
+void MainWindow::on_X_textChanged(const QString &arg1) {change_value(&X_f,&X,arg1);}
 void MainWindow::on_N_textChanged(const QString &arg1)
 {
     if (arg1.isEmpty()){
@@ -184,33 +160,6 @@ void MainWindow::on_N_textChanged(const QString &arg1)
         do_stuff();
     }
 }
-void MainWindow::on_X_textChanged(const QString &arg1)
-{
-
-    if (arg1.isEmpty())
-        X_f = false;
-    else{
-        X = arg1.toDouble();
-        X_f = true;
-
-        do_stuff();
-
-    }
 
 
-
-}
-
-
-void MainWindow::on_radio_error_toggled()
-{
-
-    ui->stackedWidget->setCurrentIndex( !ui->stackedWidget->currentIndex() );
-
-    //resize
-    ui->page->resize(ui->gridLayout_2->geometry().width(),ui->gridLayout_2->geometry().height());
-    ui->page_2->resize(ui->gridLayout_2->geometry().width(),ui->gridLayout_2->geometry().height());
-
-
-}
 
