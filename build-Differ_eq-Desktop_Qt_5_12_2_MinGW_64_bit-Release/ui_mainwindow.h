@@ -85,9 +85,9 @@ public:
     QCustomPlot *Tot_plot;
     QFormLayout *formLayout_3;
     QLabel *label;
-    QLineEdit *lineEdit;
+    QLineEdit *N0;
     QLabel *label_3;
-    QLineEdit *lineEdit_2;
+    QLineEdit *Nmax;
     QSpacerItem *verticalSpacer_7;
     QSpacerItem *verticalSpacer_8;
     QLabel *label_5;
@@ -109,7 +109,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(916, 717);
+        MainWindow->resize(749, 686);
         QFont font;
         font.setPointSize(12);
         MainWindow->setFont(font);
@@ -235,6 +235,8 @@ public:
         font5.setPointSize(10);
         font5.setKerning(true);
         X0->setFont(font5);
+        X0->setFocusPolicy(Qt::StrongFocus);
+        X0->setMaxLength(7);
 
         formLayout_2->setWidget(3, QFormLayout::FieldRole, X0);
 
@@ -254,6 +256,8 @@ public:
         sizePolicy1.setHeightForWidth(Y0->sizePolicy().hasHeightForWidth());
         Y0->setSizePolicy(sizePolicy1);
         Y0->setMaximumSize(QSize(65, 50));
+        Y0->setFocusPolicy(Qt::StrongFocus);
+        Y0->setMaxLength(7);
 
         formLayout_2->setWidget(4, QFormLayout::FieldRole, Y0);
 
@@ -274,6 +278,8 @@ public:
         sizePolicy1.setHeightForWidth(X->sizePolicy().hasHeightForWidth());
         X->setSizePolicy(sizePolicy1);
         X->setMaximumSize(QSize(65, 50));
+        X->setFocusPolicy(Qt::StrongFocus);
+        X->setMaxLength(7);
         X->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         formLayout_2->setWidget(5, QFormLayout::FieldRole, X);
@@ -294,6 +300,8 @@ public:
         sizePolicy1.setHeightForWidth(N->sizePolicy().hasHeightForWidth());
         N->setSizePolicy(sizePolicy1);
         N->setMaximumSize(QSize(65, 50));
+        N->setFocusPolicy(Qt::StrongFocus);
+        N->setMaxLength(7);
         N->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         N->setDragEnabled(false);
 
@@ -480,18 +488,18 @@ public:
 
         formLayout_3->setWidget(1, QFormLayout::LabelRole, label);
 
-        lineEdit = new QLineEdit(tab_2);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        N0 = new QLineEdit(tab_2);
+        N0->setObjectName(QString::fromUtf8("N0"));
         QSizePolicy sizePolicy5(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy5.setHorizontalStretch(0);
         sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
-        lineEdit->setSizePolicy(sizePolicy5);
-        lineEdit->setMaximumSize(QSize(70, 16777215));
-        lineEdit->setMaxLength(4);
-        lineEdit->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        sizePolicy5.setHeightForWidth(N0->sizePolicy().hasHeightForWidth());
+        N0->setSizePolicy(sizePolicy5);
+        N0->setMaximumSize(QSize(70, 16777215));
+        N0->setMaxLength(4);
+        N0->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
-        formLayout_3->setWidget(1, QFormLayout::FieldRole, lineEdit);
+        formLayout_3->setWidget(1, QFormLayout::FieldRole, N0);
 
         label_3 = new QLabel(tab_2);
         label_3->setObjectName(QString::fromUtf8("label_3"));
@@ -501,14 +509,14 @@ public:
 
         formLayout_3->setWidget(2, QFormLayout::LabelRole, label_3);
 
-        lineEdit_2 = new QLineEdit(tab_2);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-        sizePolicy5.setHeightForWidth(lineEdit_2->sizePolicy().hasHeightForWidth());
-        lineEdit_2->setSizePolicy(sizePolicy5);
-        lineEdit_2->setMaximumSize(QSize(70, 16777215));
-        lineEdit_2->setMaxLength(4);
+        Nmax = new QLineEdit(tab_2);
+        Nmax->setObjectName(QString::fromUtf8("Nmax"));
+        sizePolicy5.setHeightForWidth(Nmax->sizePolicy().hasHeightForWidth());
+        Nmax->setSizePolicy(sizePolicy5);
+        Nmax->setMaximumSize(QSize(70, 16777215));
+        Nmax->setMaxLength(4);
 
-        formLayout_3->setWidget(2, QFormLayout::FieldRole, lineEdit_2);
+        formLayout_3->setWidget(2, QFormLayout::FieldRole, Nmax);
 
         verticalSpacer_7 = new QSpacerItem(113, 220, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
@@ -612,7 +620,6 @@ public:
         QWidget::setTabOrder(X0, Y0);
         QWidget::setTabOrder(Y0, X);
         QWidget::setTabOrder(X, N);
-        QWidget::setTabOrder(N, tabWidget);
 
         retranslateUi(MainWindow);
 

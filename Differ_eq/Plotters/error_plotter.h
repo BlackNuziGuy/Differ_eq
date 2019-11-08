@@ -2,7 +2,7 @@
 #define ERROR_GRAPH_H
 
 #include "plotter.h"
-#include "main_plotter.h"
+#include "Plotters/main_plotter.h"
 
 
 class Error_Plotter : public Plotter

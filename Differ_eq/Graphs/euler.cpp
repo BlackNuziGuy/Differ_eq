@@ -1,4 +1,4 @@
-#include "euler.h"
+#include "Graphs/euler.h"
 
 Euler::Euler(QCustomPlot * gr) : Graph(gr){graph->setPen(color());}
 QColor Euler::color(){  return QColor(255,87,51);}

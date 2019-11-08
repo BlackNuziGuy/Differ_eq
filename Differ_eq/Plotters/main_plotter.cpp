@@ -1,4 +1,4 @@
-#include "main_plotter.h"
+#include "Plotters/main_plotter.h"
 #include <math.h>
 #include <QMainWindow>
 

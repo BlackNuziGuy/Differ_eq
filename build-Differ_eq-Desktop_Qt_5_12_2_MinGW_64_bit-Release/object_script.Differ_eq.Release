@@ -1,13 +1,13 @@
-release/error_plotter.o
 release/euler.o
 release/exact.o
 release/imp_euler.o
 release/kunkka.o
-release/main.o
+release/error_plotter.o
 release/main_plotter.o
+release/toterror_plotter.o
+release/main.o
 release/mainwindow.o
 release/qcustomplot.o
-release/toterror_plotter.o
 release/qrc_style.o
 release/moc_mainwindow.o
 release/moc_qcustomplot.o

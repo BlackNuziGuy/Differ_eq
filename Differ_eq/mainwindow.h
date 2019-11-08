@@ -2,8 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <main_plotter.h>
-#include "error_plotter.h"
+#include "Plotters/main_plotter.h"
+#include "Plotters/error_plotter.h"
+#include "Plotters/toterror_plotter.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -35,6 +36,7 @@ private:
     Ui::MainWindow *ui;
     Main_Plotter *MPlot;
     Error_Plotter *EPlot;
+    TotError_Plotter *TEPlot;
 
     double X0,Y0,X;
     int N;

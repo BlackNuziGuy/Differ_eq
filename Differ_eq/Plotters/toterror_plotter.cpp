@@ -1,4 +1,4 @@
-#include "toterror_plotter.h"
+#include "Plotters/toterror_plotter.h"
 
 TotError_Plotter::TotError_Plotter(QCustomPlot *gr,Main_Plotter *pl) : Plotter(gr){
 

@@ -1,4 +1,4 @@
-#include "exact.h"
+#include "Graphs/exact.h"
 
 Exact::Exact(QCustomPlot * gr) : Graph(gr){ graph->setPen(QPen(color()));}
 QColor Exact::color(){return (QColor( 0,0,0,255) );}

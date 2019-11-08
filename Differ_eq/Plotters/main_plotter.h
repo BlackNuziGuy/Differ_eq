@@ -1,10 +1,10 @@
 #ifndef MAIN_GRAPH_H
 #define MAIN_GRAPH_H
 #include "plotter.h"
-#include "exact.h"
-#include "kunkka.h"
-#include "imp_euler.h"
-#include "euler.h"
+#include "Graphs/exact.h"
+#include "Graphs/kunkka.h"
+#include "Graphs/imp_euler.h"
+#include "Graphs/euler.h"
 
 
 

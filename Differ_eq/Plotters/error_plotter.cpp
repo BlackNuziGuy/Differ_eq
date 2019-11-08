@@ -1,4 +1,4 @@
-#include "error_plotter.h"
+#include "Plotters/error_plotter.h"
 
 Error_Plotter::Error_Plotter(QCustomPlot *cp, Main_Plotter *pl) : Plotter(cp){
 

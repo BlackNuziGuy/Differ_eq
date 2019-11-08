@@ -2,7 +2,7 @@
 #define TOTERROR_GRAPH_H
 
 #include "plotter.h"
-#include "main_plotter.h"
+#include "Plotters/main_plotter.h"
 
 
 class TotError_Plotter : public Plotter

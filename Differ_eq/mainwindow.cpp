@@ -19,12 +19,13 @@ void MainWindow::Set_Appearance(){
     //Filter input
     QDoubleValidator *sas = new QDoubleValidator(-100, 100, 2);
     ui->X->setValidator(sas);
-    ui->X->setMaxLength(7);
     ui->X0->setValidator(sas);
-    ui->X0->setMaxLength(7);
     ui->Y0->setValidator(sas);
-    ui->Y0->setMaxLength(7);
-    ui->N->setValidator(new QIntValidator(1,99999));
+
+    QIntValidator *syas = new QIntValidator(1,9999);
+    ui->N->setValidator(syas);
+    ui->N0->setValidator(syas);
+    ui->Nmax->setValidator(syas);
 
 
     //Disable some elements
@@ -47,11 +48,6 @@ void MainWindow::do_stuff(){
         QString text = "<html><head/><body><p>	X<span style=\" vertical-align:sub;\">0</span></p></body></html>";
         ui->label_X0->setText("<font color=#ffffff>"+text+"</font>");
         ui->label_X->setText("<font color=#ffffff>X</font>");
-
-
-
-//        if (X0 == 1.0 && Y0 == 4.0 && X == 8.0 && N == 8.0 )
-//            ui->Bug->setEnabled(true);
 
 
         MPlot->Caculate_all(X0, Y0, X, N);
