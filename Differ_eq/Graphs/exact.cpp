@@ -2,10 +2,7 @@
 
 Exact::Exact(QCustomPlot * gr) : Graph(gr){ graph->setPen(QPen(color()));}
 QColor Exact::color(){return (QColor( 0,0,0,255) );}
-double Exact::errorfunc(double xi, double xi_1, double (*y)(double, double), double c){return xi + xi_1 + y(0,0) + c;}//USELESS BUT NECESSARY; VERY KOSTIL
-double Exact::func( double x, double c){return (1/x + 1/(x + c*pow(pow(x,2),1/3.0)) );}
-void Exact::visible(bool x){graph->setVisible(x);}
-
+//double Exact::errorfunc(double xi, double xi_1, double c){return xi + xi_1 + y_fs(0,0) + c;}//USELESS BUT NECESSARY; VERY KOSTIL
 
 void Exact::Calculate(double x0, double y0, double X, int N){
 
@@ -23,7 +20,7 @@ void Exact::Calculate(double x0, double y0, double X, int N){
     for(int i = 0; i<=N; i++){
 
         x[i] = x_v;
-        y[i] = func(x[i],c);
+        y[i] = y_f(x[i],c);
 
         //Find assymtote
         if( abs(x[i] - 0) < abs(x[i1] - 0) )

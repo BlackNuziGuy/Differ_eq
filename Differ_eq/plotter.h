@@ -1,6 +1,7 @@
 #ifndef PLOTTER_H
 #define PLOTTER_H
 #include <qcustomplot.h>
+#include "Graph.h"
 
 class Plotter{
 
@@ -11,7 +12,7 @@ public:
         grid = element;
 
         //Set interactions and appearance
-        grid->xAxis->ticker()->setTickStepStrategy( QCPAxisTicker::tssReadability);
+        grid->xAxis->ticker()->setTickStepStrategy( QCPAxisTicker::tssMeetTickCount);
         grid->xAxis->setLabel("x");
         grid->yAxis->setLabel("y");
     }

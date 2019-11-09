@@ -2,11 +2,6 @@
 #include <math.h>
 #include <QMainWindow>
 
-Main_Plotter::Main_Plotter(QCustomPlot * element) : Plotter(element){
-    //Add other ones later; REMEMBER the order for the "visible" toggle functions
-    to_plot = {new Exact(element), new Euler(element) };
-}
-
 void Main_Plotter::Zoom(double x1, double x2, double y)
 {
     // set axes ranges, so we see all data:

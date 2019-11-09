@@ -14,12 +14,12 @@ public:
     QColor color();
 
     void Calculate(double x0, double y0, double X, int N);
-    double func(double x, double c);
+    static double func(double x, double c);
 
-    void visible(bool x);
+
 
 private:
-    double errorfunc(double xi, double xi_1, double y(double, double), double c);
+//    double errorfunc(double xi, double xi_1, double c);
 };
 
 #endif // EXACT_GRAPH_H

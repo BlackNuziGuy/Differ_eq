@@ -1,18 +1,6 @@
 #include "Plotters/error_plotter.h"
 
-Error_Plotter::Error_Plotter(QCustomPlot *cp, Main_Plotter *pl) : Plotter(cp){
-
-    //Magic
-    graphs = QVector<Graph*>(pl->to_plot);
-    graphs.remove(0);
-
-    //Generate new graphs automatically
-    for (int i = 0; i < graphs.size(); i++){
-        ergraphs.append( grid->addGraph() );
-        ergraphs[i]->setPen( graphs[i]->color() );
-    }
-
-}
+//Error_Plotter::Error_Plotter(QCustomPlot *cp, Main_Plotter *pl)
 
 void Error_Plotter::Zoom(double X0, double X){
     grid->xAxis->setRange(X0, X);
@@ -35,7 +23,7 @@ void Error_Plotter::Caculate_all(double x0, double y0, double X, int N)
         //Do it for each graph
         for( int i = 0; i<ergraphs.size(); i++){
             xv[i].append(x0);
-            yv[i].append(graphs[i]->errorfunc(x0, x0+h, &y, c));
+            yv[i].append(graphs[i]->errorfunc(x0, x0+h,c));
         }
 
         x0 += h;

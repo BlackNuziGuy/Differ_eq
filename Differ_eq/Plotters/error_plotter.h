@@ -8,21 +8,29 @@
 class Error_Plotter : public Plotter
 {
 public:
-    Error_Plotter(QCustomPlot *gr,Main_Plotter *pl);
-    virtual ~Error_Plotter(){}
+    Error_Plotter(QCustomPlot *cp,Main_Plotter *pl) : Plotter(cp){
 
-    QVector<Graph*> graphs;
-    QVector<QCPGraph*> ergraphs;
+        //Magic
+        graphs = QVector<Graph*>(pl->to_plot);
+        graphs.remove(0);
 
+        //Generate new graphs automatically
+        for (int i = 0; i < graphs.size(); i++){
+            ergraphs.append( grid->addGraph() );
+            ergraphs[i]->setPen( graphs[i]->color() );
+        }
 
-    static double y( double x, double c){
-        return (1/x + 1/(x + c*pow(pow(x,2),1/3.0)) );
     }
 
+
+    virtual ~Error_Plotter(){}
 
 
     void Zoom(double, double);
     void Caculate_all(double x0, double y0, double X, int N) override;
+
+    QVector<Graph*> graphs;
+    QVector<QCPGraph*> ergraphs;
 
 private:
     void Zoom(double, double,double) override{}

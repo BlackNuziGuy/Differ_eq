@@ -32,22 +32,34 @@ private slots:
     void on_Bug_toggled(bool checked);
     void on_radio_error_toggled();
 
+    void on_N0_textChanged(const QString &arg1);
+
+    void on_Nmax_textChanged(const QString &arg1);
+
+    void on_FIND_clicked();
+
+    void on_imp_euler_toggled(bool checked);
+
+    void on_kunkka_toggled(bool checked);
+
 private:
     Ui::MainWindow *ui;
     Main_Plotter *MPlot;
     Error_Plotter *EPlot;
     TotError_Plotter *TEPlot;
 
-    double X0,Y0,X;
-    int N;
-    bool X0_f = false,Y0_f = false,X_f = false,N_f = false;
+    QVector<QCheckBox*> graph_check_boxes;
 
+    double X0,Y0,X;
+    int N, N0, Nmax;
+    bool X0_f = false,Y0_f = false,X_f = false,N_f = false, N0_f = false, Nmax_f = false;
 
 
     void Set_Appearance();
     void do_stuff();
     void set_graph_visibility(int ind, bool c);
     void change_value(bool*, double*, QString);
+    void do_stuff_for_toterr();
 //    void Connect_Things();
 
 

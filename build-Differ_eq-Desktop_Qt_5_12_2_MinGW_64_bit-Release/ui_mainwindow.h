@@ -18,6 +18,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
@@ -62,14 +63,24 @@ public:
     QCheckBox *euler;
     QLabel *label_8;
     QHBoxLayout *horizontalLayout_8;
+    QSpacerItem *horizontalSpacer_7;
+    QCheckBox *imp_euler;
     QLabel *label_9;
     QHBoxLayout *horizontalLayout_9;
+    QSpacerItem *horizontalSpacer_8;
+    QCheckBox *kunkka;
     QLabel *label_10;
     QHBoxLayout *horizontalLayout_10;
     QSpacerItem *horizontalSpacer_4;
     QCheckBox *exact;
+    QLabel *label_13;
+    QLabel *label228;
     QSpacerItem *verticalSpacer;
     QSpacerItem *verticalSpacer_2;
+    QLabel *X_val;
+    QLabel *Y_val;
+    QSpacerItem *verticalSpacer_11;
+    QSpacerItem *verticalSpacer_12;
     QGridLayout *gridLayout_2;
     QStackedWidget *stackedWidget;
     QWidget *page;
@@ -84,32 +95,36 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QCustomPlot *Tot_plot;
     QFormLayout *formLayout_3;
-    QLabel *label;
+    QSpacerItem *verticalSpacer_10;
+    QSpacerItem *verticalSpacer_9;
+    QLabel *label_N0;
     QLineEdit *N0;
-    QLabel *label_3;
+    QLabel *label_Nmax;
     QLineEdit *Nmax;
     QSpacerItem *verticalSpacer_7;
     QSpacerItem *verticalSpacer_8;
     QLabel *label_5;
-    QLabel *label_11;
-    QLabel *label_12;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer_2;
     QCheckBox *checkBox;
+    QLabel *label_11;
     QHBoxLayout *horizontalLayout_11;
     QSpacerItem *horizontalSpacer_5;
     QCheckBox *checkBox_2;
+    QLabel *label_12;
     QHBoxLayout *horizontalLayout_12;
     QSpacerItem *horizontalSpacer_6;
     QCheckBox *checkBox_3;
-    QSpacerItem *verticalSpacer_9;
-    QSpacerItem *verticalSpacer_10;
+    QPushButton *FIND;
+    QSpacerItem *verticalSpacer_13;
+    QSpacerItem *verticalSpacer_14;
+    QLabel *label;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(749, 686);
+        MainWindow->resize(828, 686);
         QFont font;
         font.setPointSize(12);
         MainWindow->setFont(font);
@@ -236,7 +251,7 @@ public:
         font5.setKerning(true);
         X0->setFont(font5);
         X0->setFocusPolicy(Qt::StrongFocus);
-        X0->setMaxLength(7);
+        X0->setMaxLength(6);
 
         formLayout_2->setWidget(3, QFormLayout::FieldRole, X0);
 
@@ -257,7 +272,7 @@ public:
         Y0->setSizePolicy(sizePolicy1);
         Y0->setMaximumSize(QSize(65, 50));
         Y0->setFocusPolicy(Qt::StrongFocus);
-        Y0->setMaxLength(7);
+        Y0->setMaxLength(6);
 
         formLayout_2->setWidget(4, QFormLayout::FieldRole, Y0);
 
@@ -279,7 +294,7 @@ public:
         X->setSizePolicy(sizePolicy1);
         X->setMaximumSize(QSize(65, 50));
         X->setFocusPolicy(Qt::StrongFocus);
-        X->setMaxLength(7);
+        X->setMaxLength(6);
         X->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         formLayout_2->setWidget(5, QFormLayout::FieldRole, X);
@@ -301,7 +316,7 @@ public:
         N->setSizePolicy(sizePolicy1);
         N->setMaximumSize(QSize(65, 50));
         N->setFocusPolicy(Qt::StrongFocus);
-        N->setMaxLength(7);
+        N->setMaxLength(6);
         N->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         N->setDragEnabled(false);
 
@@ -357,6 +372,15 @@ public:
 
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
+        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_8->addItem(horizontalSpacer_7);
+
+        imp_euler = new QCheckBox(tab_1);
+        imp_euler->setObjectName(QString::fromUtf8("imp_euler"));
+
+        horizontalLayout_8->addWidget(imp_euler);
+
 
         formLayout_2->setLayout(9, QFormLayout::FieldRole, horizontalLayout_8);
 
@@ -371,6 +395,15 @@ public:
 
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
+        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_9->addItem(horizontalSpacer_8);
+
+        kunkka = new QCheckBox(tab_1);
+        kunkka->setObjectName(QString::fromUtf8("kunkka"));
+
+        horizontalLayout_9->addWidget(kunkka);
+
 
         formLayout_2->setLayout(10, QFormLayout::FieldRole, horizontalLayout_9);
 
@@ -399,13 +432,49 @@ public:
 
         formLayout_2->setLayout(11, QFormLayout::FieldRole, horizontalLayout_10);
 
+        label_13 = new QLabel(tab_1);
+        label_13->setObjectName(QString::fromUtf8("label_13"));
+        sizePolicy2.setHeightForWidth(label_13->sizePolicy().hasHeightForWidth());
+        label_13->setSizePolicy(sizePolicy2);
+        label_13->setMinimumSize(QSize(80, 0));
+        label_13->setMaximumSize(QSize(80, 16777215));
+        label_13->setTextFormat(Qt::RichText);
+        label_13->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_13->setIndent(0);
+
+        formLayout_2->setWidget(13, QFormLayout::LabelRole, label_13);
+
+        label228 = new QLabel(tab_1);
+        label228->setObjectName(QString::fromUtf8("label228"));
+        label228->setAlignment(Qt::AlignCenter);
+
+        formLayout_2->setWidget(13, QFormLayout::FieldRole, label228);
+
         verticalSpacer = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Ignored);
 
-        formLayout_2->setItem(12, QFormLayout::LabelRole, verticalSpacer);
+        formLayout_2->setItem(15, QFormLayout::LabelRole, verticalSpacer);
 
         verticalSpacer_2 = new QSpacerItem(10, 10, QSizePolicy::Minimum, QSizePolicy::Ignored);
 
-        formLayout_2->setItem(12, QFormLayout::FieldRole, verticalSpacer_2);
+        formLayout_2->setItem(15, QFormLayout::FieldRole, verticalSpacer_2);
+
+        X_val = new QLabel(tab_1);
+        X_val->setObjectName(QString::fromUtf8("X_val"));
+
+        formLayout_2->setWidget(14, QFormLayout::LabelRole, X_val);
+
+        Y_val = new QLabel(tab_1);
+        Y_val->setObjectName(QString::fromUtf8("Y_val"));
+
+        formLayout_2->setWidget(14, QFormLayout::FieldRole, Y_val);
+
+        verticalSpacer_11 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        formLayout_2->setItem(12, QFormLayout::LabelRole, verticalSpacer_11);
+
+        verticalSpacer_12 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        formLayout_2->setItem(12, QFormLayout::FieldRole, verticalSpacer_12);
 
 
         gridLayout_3->addLayout(formLayout_2, 0, 1, 1, 1);
@@ -479,14 +548,22 @@ public:
         formLayout_3->setObjectName(QString::fromUtf8("formLayout_3"));
         formLayout_3->setLabelAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         formLayout_3->setFormAlignment(Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing);
-        label = new QLabel(tab_2);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setTextFormat(Qt::RichText);
-        label->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
-        label->setMargin(-1);
-        label->setIndent(20);
+        verticalSpacer_10 = new QSpacerItem(20, 120, QSizePolicy::Minimum, QSizePolicy::Maximum);
 
-        formLayout_3->setWidget(1, QFormLayout::LabelRole, label);
+        formLayout_3->setItem(0, QFormLayout::LabelRole, verticalSpacer_10);
+
+        verticalSpacer_9 = new QSpacerItem(20, 120, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding);
+
+        formLayout_3->setItem(0, QFormLayout::FieldRole, verticalSpacer_9);
+
+        label_N0 = new QLabel(tab_2);
+        label_N0->setObjectName(QString::fromUtf8("label_N0"));
+        label_N0->setTextFormat(Qt::RichText);
+        label_N0->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_N0->setMargin(-1);
+        label_N0->setIndent(20);
+
+        formLayout_3->setWidget(1, QFormLayout::LabelRole, label_N0);
 
         N0 = new QLineEdit(tab_2);
         N0->setObjectName(QString::fromUtf8("N0"));
@@ -495,51 +572,41 @@ public:
         sizePolicy5.setVerticalStretch(0);
         sizePolicy5.setHeightForWidth(N0->sizePolicy().hasHeightForWidth());
         N0->setSizePolicy(sizePolicy5);
-        N0->setMaximumSize(QSize(70, 16777215));
+        N0->setMaximumSize(QSize(47, 16777215));
         N0->setMaxLength(4);
         N0->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         formLayout_3->setWidget(1, QFormLayout::FieldRole, N0);
 
-        label_3 = new QLabel(tab_2);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
-        label_3->setMargin(-1);
-        label_3->setIndent(20);
+        label_Nmax = new QLabel(tab_2);
+        label_Nmax->setObjectName(QString::fromUtf8("label_Nmax"));
+        label_Nmax->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_Nmax->setMargin(-1);
+        label_Nmax->setIndent(20);
 
-        formLayout_3->setWidget(2, QFormLayout::LabelRole, label_3);
+        formLayout_3->setWidget(2, QFormLayout::LabelRole, label_Nmax);
 
         Nmax = new QLineEdit(tab_2);
         Nmax->setObjectName(QString::fromUtf8("Nmax"));
         sizePolicy5.setHeightForWidth(Nmax->sizePolicy().hasHeightForWidth());
         Nmax->setSizePolicy(sizePolicy5);
-        Nmax->setMaximumSize(QSize(70, 16777215));
+        Nmax->setMaximumSize(QSize(47, 16777215));
         Nmax->setMaxLength(4);
 
         formLayout_3->setWidget(2, QFormLayout::FieldRole, Nmax);
 
-        verticalSpacer_7 = new QSpacerItem(113, 220, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        verticalSpacer_7 = new QSpacerItem(113, 180, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
-        formLayout_3->setItem(3, QFormLayout::LabelRole, verticalSpacer_7);
+        formLayout_3->setItem(5, QFormLayout::LabelRole, verticalSpacer_7);
 
-        verticalSpacer_8 = new QSpacerItem(20, 220, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        verticalSpacer_8 = new QSpacerItem(20, 180, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
-        formLayout_3->setItem(3, QFormLayout::FieldRole, verticalSpacer_8);
+        formLayout_3->setItem(5, QFormLayout::FieldRole, verticalSpacer_8);
 
         label_5 = new QLabel(tab_2);
         label_5->setObjectName(QString::fromUtf8("label_5"));
 
-        formLayout_3->setWidget(4, QFormLayout::LabelRole, label_5);
-
-        label_11 = new QLabel(tab_2);
-        label_11->setObjectName(QString::fromUtf8("label_11"));
-
-        formLayout_3->setWidget(5, QFormLayout::LabelRole, label_11);
-
-        label_12 = new QLabel(tab_2);
-        label_12->setObjectName(QString::fromUtf8("label_12"));
-
-        formLayout_3->setWidget(6, QFormLayout::LabelRole, label_12);
+        formLayout_3->setWidget(6, QFormLayout::LabelRole, label_5);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
@@ -557,7 +624,12 @@ public:
         horizontalLayout->addWidget(checkBox);
 
 
-        formLayout_3->setLayout(4, QFormLayout::FieldRole, horizontalLayout);
+        formLayout_3->setLayout(6, QFormLayout::FieldRole, horizontalLayout);
+
+        label_11 = new QLabel(tab_2);
+        label_11->setObjectName(QString::fromUtf8("label_11"));
+
+        formLayout_3->setWidget(7, QFormLayout::LabelRole, label_11);
 
         horizontalLayout_11 = new QHBoxLayout();
         horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
@@ -575,7 +647,12 @@ public:
         horizontalLayout_11->addWidget(checkBox_2);
 
 
-        formLayout_3->setLayout(5, QFormLayout::FieldRole, horizontalLayout_11);
+        formLayout_3->setLayout(7, QFormLayout::FieldRole, horizontalLayout_11);
+
+        label_12 = new QLabel(tab_2);
+        label_12->setObjectName(QString::fromUtf8("label_12"));
+
+        formLayout_3->setWidget(8, QFormLayout::LabelRole, label_12);
 
         horizontalLayout_12 = new QHBoxLayout();
         horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
@@ -593,15 +670,25 @@ public:
         horizontalLayout_12->addWidget(checkBox_3);
 
 
-        formLayout_3->setLayout(6, QFormLayout::FieldRole, horizontalLayout_12);
+        formLayout_3->setLayout(8, QFormLayout::FieldRole, horizontalLayout_12);
 
-        verticalSpacer_9 = new QSpacerItem(20, 120, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding);
+        FIND = new QPushButton(tab_2);
+        FIND->setObjectName(QString::fromUtf8("FIND"));
 
-        formLayout_3->setItem(0, QFormLayout::FieldRole, verticalSpacer_9);
+        formLayout_3->setWidget(4, QFormLayout::LabelRole, FIND);
 
-        verticalSpacer_10 = new QSpacerItem(20, 120, QSizePolicy::Minimum, QSizePolicy::Maximum);
+        verticalSpacer_13 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        formLayout_3->setItem(0, QFormLayout::LabelRole, verticalSpacer_10);
+        formLayout_3->setItem(3, QFormLayout::LabelRole, verticalSpacer_13);
+
+        verticalSpacer_14 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        formLayout_3->setItem(3, QFormLayout::FieldRole, verticalSpacer_14);
+
+        label = new QLabel(tab_2);
+        label->setObjectName(QString::fromUtf8("label"));
+
+        formLayout_3->setWidget(4, QFormLayout::FieldRole, label);
 
 
         horizontalLayout_4->addLayout(formLayout_3);
@@ -661,18 +748,26 @@ public:
         label_7->setText(QApplication::translate("MainWindow", "<html><head/><body><p>Euler</p></body></html>", nullptr));
         euler->setText(QString());
         label_8->setText(QApplication::translate("MainWindow", "<html><head/><body><p>Imp. Euler </p></body></html>", nullptr));
+        imp_euler->setText(QString());
         label_9->setText(QApplication::translate("MainWindow", "<html><head/><body><p>Runge-Kutta</p></body></html>", nullptr));
+        kunkka->setText(QString());
         label_10->setText(QApplication::translate("MainWindow", "<html><head/><body><p>Main graph</p></body></html>", nullptr));
         exact->setText(QString());
+        label_13->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt;\">		X</span></p></body></html>", nullptr));
+        label228->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:16pt;\">Y</span></p></body></html>", nullptr));
+        X_val->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        Y_val->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_1), QApplication::translate("MainWindow", "Main\\Error graphs", nullptr));
-        label->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:16pt;\">N</span><span style=\" font-size:16pt; vertical-align:sub;\">0</span></p></body></html>", nullptr));
-        label_3->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:16pt;\">N</span><span style=\" font-size:16pt; vertical-align:sub;\">max</span></p></body></html>", nullptr));
+        label_N0->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:16pt;\">N</span><span style=\" font-size:16pt; vertical-align:sub;\">0</span></p></body></html>", nullptr));
+        label_Nmax->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:16pt;\">N</span><span style=\" font-size:16pt; vertical-align:sub;\">max</span></p></body></html>", nullptr));
         label_5->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Euler</span></p></body></html>", nullptr));
-        label_11->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Imp. Euler</span></p></body></html>", nullptr));
-        label_12->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Runge-Kutta</span></p></body></html>", nullptr));
         checkBox->setText(QString());
+        label_11->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Imp. Euler</span></p></body></html>", nullptr));
         checkBox_2->setText(QString());
+        label_12->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Runge-Kutta</span></p></body></html>", nullptr));
         checkBox_3->setText(QString());
+        FIND->setText(QApplication::translate("MainWindow", "Find errors", nullptr));
+        label->setText(QApplication::translate("MainWindow", "*Laggy", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Total error graph", nullptr));
     } // retranslateUi
 
