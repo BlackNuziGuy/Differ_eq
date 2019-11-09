@@ -106,15 +106,15 @@ public:
     QLabel *label_5;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer_2;
-    QCheckBox *checkBox;
+    QCheckBox *Teuler;
     QLabel *label_11;
     QHBoxLayout *horizontalLayout_11;
     QSpacerItem *horizontalSpacer_5;
-    QCheckBox *checkBox_2;
+    QCheckBox *Timp_euler;
     QLabel *label_12;
     QHBoxLayout *horizontalLayout_12;
     QSpacerItem *horizontalSpacer_6;
-    QCheckBox *checkBox_3;
+    QCheckBox *TKunkka;
     QPushButton *FIND;
     QSpacerItem *verticalSpacer_13;
     QSpacerItem *verticalSpacer_14;
@@ -541,6 +541,7 @@ public:
         Tot_plot->setObjectName(QString::fromUtf8("Tot_plot"));
         sizePolicy3.setHeightForWidth(Tot_plot->sizePolicy().hasHeightForWidth());
         Tot_plot->setSizePolicy(sizePolicy3);
+        Tot_plot->setCursor(QCursor(Qt::CrossCursor));
 
         horizontalLayout_4->addWidget(Tot_plot);
 
@@ -615,13 +616,13 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer_2);
 
-        checkBox = new QCheckBox(tab_2);
-        checkBox->setObjectName(QString::fromUtf8("checkBox"));
-        sizePolicy5.setHeightForWidth(checkBox->sizePolicy().hasHeightForWidth());
-        checkBox->setSizePolicy(sizePolicy5);
-        checkBox->setMaximumSize(QSize(20, 16777215));
+        Teuler = new QCheckBox(tab_2);
+        Teuler->setObjectName(QString::fromUtf8("Teuler"));
+        sizePolicy5.setHeightForWidth(Teuler->sizePolicy().hasHeightForWidth());
+        Teuler->setSizePolicy(sizePolicy5);
+        Teuler->setMaximumSize(QSize(20, 16777215));
 
-        horizontalLayout->addWidget(checkBox);
+        horizontalLayout->addWidget(Teuler);
 
 
         formLayout_3->setLayout(6, QFormLayout::FieldRole, horizontalLayout);
@@ -638,13 +639,13 @@ public:
 
         horizontalLayout_11->addItem(horizontalSpacer_5);
 
-        checkBox_2 = new QCheckBox(tab_2);
-        checkBox_2->setObjectName(QString::fromUtf8("checkBox_2"));
-        sizePolicy5.setHeightForWidth(checkBox_2->sizePolicy().hasHeightForWidth());
-        checkBox_2->setSizePolicy(sizePolicy5);
-        checkBox_2->setMaximumSize(QSize(20, 16777215));
+        Timp_euler = new QCheckBox(tab_2);
+        Timp_euler->setObjectName(QString::fromUtf8("Timp_euler"));
+        sizePolicy5.setHeightForWidth(Timp_euler->sizePolicy().hasHeightForWidth());
+        Timp_euler->setSizePolicy(sizePolicy5);
+        Timp_euler->setMaximumSize(QSize(20, 16777215));
 
-        horizontalLayout_11->addWidget(checkBox_2);
+        horizontalLayout_11->addWidget(Timp_euler);
 
 
         formLayout_3->setLayout(7, QFormLayout::FieldRole, horizontalLayout_11);
@@ -661,13 +662,13 @@ public:
 
         horizontalLayout_12->addItem(horizontalSpacer_6);
 
-        checkBox_3 = new QCheckBox(tab_2);
-        checkBox_3->setObjectName(QString::fromUtf8("checkBox_3"));
-        sizePolicy5.setHeightForWidth(checkBox_3->sizePolicy().hasHeightForWidth());
-        checkBox_3->setSizePolicy(sizePolicy5);
-        checkBox_3->setMaximumSize(QSize(20, 16777215));
+        TKunkka = new QCheckBox(tab_2);
+        TKunkka->setObjectName(QString::fromUtf8("TKunkka"));
+        sizePolicy5.setHeightForWidth(TKunkka->sizePolicy().hasHeightForWidth());
+        TKunkka->setSizePolicy(sizePolicy5);
+        TKunkka->setMaximumSize(QSize(20, 16777215));
 
-        horizontalLayout_12->addWidget(checkBox_3);
+        horizontalLayout_12->addWidget(TKunkka);
 
 
         formLayout_3->setLayout(8, QFormLayout::FieldRole, horizontalLayout_12);
@@ -710,7 +711,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
         stackedWidget->setCurrentIndex(0);
 
 
@@ -761,13 +762,13 @@ public:
         label_N0->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:16pt;\">N</span><span style=\" font-size:16pt; vertical-align:sub;\">0</span></p></body></html>", nullptr));
         label_Nmax->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:16pt;\">N</span><span style=\" font-size:16pt; vertical-align:sub;\">max</span></p></body></html>", nullptr));
         label_5->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Euler</span></p></body></html>", nullptr));
-        checkBox->setText(QString());
+        Teuler->setText(QString());
         label_11->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Imp. Euler</span></p></body></html>", nullptr));
-        checkBox_2->setText(QString());
+        Timp_euler->setText(QString());
         label_12->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">Runge-Kutta</span></p></body></html>", nullptr));
-        checkBox_3->setText(QString());
+        TKunkka->setText(QString());
         FIND->setText(QApplication::translate("MainWindow", "Find errors", nullptr));
-        label->setText(QApplication::translate("MainWindow", "*Laggy", nullptr));
+        label->setText(QApplication::translate("MainWindow", "Be wary!!", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Total error graph", nullptr));
     } // retranslateUi
 

@@ -2,18 +2,20 @@
 #include "ui_mainwindow.h"
 #include <QString>
 
+
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow){
 
     ui->setupUi(this);
-    Set_Appearance();
 
     MPlot = new Main_Plotter(ui->plotter);
     EPlot = new Error_Plotter(ui->eplotter, MPlot);
     TEPlot = new TotError_Plotter(ui->Tot_plot, MPlot);
 
-    graph_check_boxes = { ui->euler, ui->imp_euler, ui->exact, ui->kunkka};
+    graph_check_boxes = { ui->euler, ui->imp_euler, ui->exact, ui->kunkka, ui->Teuler, ui->Timp_euler, ui->TKunkka};
 
-    //ADD LEGEND; Allow to choose graph by legend
+    Set_Appearance();
+
+
     //Add threads
     //Add an ability to show 'precise' value
     //    qDebug("X: %f",graph->xAxis->pixelToCoord( (QCursor::pos()).x() ));
@@ -39,11 +41,14 @@ void MainWindow::on_radio_error_toggled(){
 }
 
 
-//Checkboxes; !!Use the index from MPlot constructor for graphs with errors!!
-void MainWindow::on_exact_toggled(bool checked){MPlot->to_plot[0]->visible(checked);MPlot->grid->replot();}
-void MainWindow::on_euler_toggled(bool checked){set_graph_visibility(1, checked);MPlot->grid->replot();}
-void MainWindow::on_imp_euler_toggled(bool checked){ set_graph_visibility(2,checked);MPlot->grid->replot();}
-void MainWindow::on_kunkka_toggled(bool checked){set_graph_visibility(3,checked);MPlot->grid->replot();}
+//Checkboxes; !!Use the index from EPlot constructor for the all graphs,but the exact one!!
+void MainWindow::on_euler_toggled(bool checked)     {set_graph_visibility(0,checked);}
+void MainWindow::on_imp_euler_toggled(bool checked) {set_graph_visibility(1,checked);}
+void MainWindow::on_kunkka_toggled(bool checked)    {set_graph_visibility(2,checked);}
+void MainWindow::on_Teuler_toggled(bool checked)    {TEPlot->ergraphs[0]->setVisible(checked); TEPlot->grid->replot();}
+void MainWindow::on_Timp_euler_toggled(bool checked){TEPlot->ergraphs[1]->setVisible(checked); TEPlot->grid->replot();}
+void MainWindow::on_TKunkka_toggled(bool checked)   {TEPlot->ergraphs[2]->setVisible(checked); TEPlot->grid->replot();}
+void MainWindow::on_exact_toggled(bool checked)     {  MPlot->to_plot[0]->visible(checked)   ; MPlot->grid->replot();}
 void MainWindow::on_Bug_toggled(bool checked)
 {
     Plotter *sas[] = {MPlot, EPlot, TEPlot};
@@ -64,7 +69,7 @@ void MainWindow::on_Bug_toggled(bool checked)
 //Text fields
 void MainWindow::on_X0_textChanged(const QString &arg1){change_value(&X0_f,&X0,arg1);}
 void MainWindow::on_Y0_textChanged(const QString &arg1){change_value(&Y0_f,&Y0,arg1);}
-void MainWindow::on_X_textChanged(const QString &arg1) {change_value(&X_f,&X,arg1);}
+void MainWindow::on_X_textChanged(const QString &arg1) {change_value(&X_f, &X, arg1);}
 void MainWindow::on_N_textChanged(const QString &arg1)
 {
     if (arg1.isEmpty() || arg1.toInt() == 0){
@@ -150,6 +155,7 @@ void MainWindow::do_stuff_for_toterr()
 
          ui->FIND->setEnabled(true);
 
+
          ui->label_N0->setText("<font color=#ffffff>"+N0_t+"</font>");
          ui->label_Nmax->setText("<font color=#ffffff>"+Nmax_t+"</font>");
      }
@@ -180,6 +186,8 @@ void MainWindow::do_stuff(){
         MPlot->Caculate_all(X0, Y0, X, N);
         EPlot->Caculate_all(X0, Y0, X, N);
 
+        MPlot->grid->savePng("SYAS");
+
         EPlot->Zoom(X0,X);
         MPlot->Zoom(X0, X,Y0);
 
@@ -197,8 +205,14 @@ void MainWindow::do_stuff(){
             ui->label_X0->setText("<font color=#ff0000>"+text+"</font>");
             ui->label_X->setText("<font color=#ff0000>X</font>");
         }
+        else{ //Or not
+            QString text = "<html><head/><body><p>	X<span style=\" vertical-align:sub;\">0</span></p></body></html>";
+            ui->label_X0->setText("<font color=#ffffff>"+text+"</font>");
+            ui->label_X->setText("<font color=#ffffff>X</font>");
+        }
 
         ui->FIND->setDisabled(true);
+
         for (auto box : graph_check_boxes )
             box->setDisabled(true);
 
@@ -208,7 +222,7 @@ void MainWindow::do_stuff(){
 void MainWindow::set_graph_visibility(int ind, bool c){
 
     MPlot->to_plot[ind]->visible(c);
-    EPlot->ergraphs[ind -1]->setVisible(c);
+    EPlot->ergraphs[ind]->setVisible(c);
 
     MPlot->grid->replot();
     EPlot->grid->replot();

@@ -1,10 +1,8 @@
 #include "Graphs/euler.h"
 
-Euler::Euler(QCustomPlot * gr) : Graph(gr){graph->setPen(color());}
-QColor Euler::color(){  return QColor(255,87,51);}
-double Euler::errorfunc(double xi, double xi_1, double c){return ( (y_f(xi_1,c) - y_f(xi,c)) - (xi_1 - xi)*derivative(xi, y_f(xi,c) ) );}
-
-//y_f(xi) - (xi_1 - xi) * derivative(xe, ye)
+double Euler::errorfunc(double xi, double xi_1, double c){
+    return ( (y_f(xi_1,c) - y_f(xi,c)) - (xi_1 - xi)*derivative(xi, y_f(xi,c) ) );
+}
 
 void Euler::Calculate(double x0, double y0, double X, int N){
 

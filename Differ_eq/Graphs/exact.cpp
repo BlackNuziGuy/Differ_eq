@@ -1,9 +1,5 @@
 #include "Graphs/exact.h"
 
-Exact::Exact(QCustomPlot * gr) : Graph(gr){ graph->setPen(QPen(color()));}
-QColor Exact::color(){return (QColor( 0,0,0,255) );}
-//double Exact::errorfunc(double xi, double xi_1, double c){return xi + xi_1 + y_fs(0,0) + c;}//USELESS BUT NECESSARY; VERY KOSTIL
-
 void Exact::Calculate(double x0, double y0, double X, int N){
 
     int i1 = 0,i2 = 0; //To account for Gaps ( there are 2 asymptotes)
@@ -33,9 +29,9 @@ void Exact::Calculate(double x0, double y0, double X, int N){
     }
 
     //DESTROY the assymptote
-    if ( (-val)<0 && 0<X)
+    if ( (-val)<0 && 0<val)
         y[i1] = std::numeric_limits<double>::quiet_NaN();
-    if ( (-val)<(-c*c*c) && (-c*c*c)<X  )
+    if ( (-val)<(-c*c*c) && (-c*c*c)<val  )
         y[i2] = std::numeric_limits<double>::quiet_NaN();
 
     graph->setData(x,y);

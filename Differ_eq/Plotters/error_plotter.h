@@ -17,7 +17,8 @@ public:
         //Generate new graphs automatically
         for (int i = 0; i < graphs.size(); i++){
             ergraphs.append( grid->addGraph() );
-            ergraphs[i]->setPen( graphs[i]->color() );
+            ergraphs[i]->setPen( graphs[i]->color );
+            ergraphs[i]->setName( graphs[i]->graph->name() );
         }
 
     }
@@ -29,10 +30,12 @@ public:
     void Zoom(double, double);
     void Caculate_all(double x0, double y0, double X, int N) override;
 
-    QVector<Graph*> graphs;
     QVector<QCPGraph*> ergraphs;
 
 private:
     void Zoom(double, double,double) override{}
+
+protected:
+    QVector<Graph*> graphs;
 };
 #endif // ERROR_GRAPH_H

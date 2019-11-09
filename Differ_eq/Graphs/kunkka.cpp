@@ -1,9 +1,5 @@
 #include "Graphs/kunkka.h"
 
-Kunkka::Kunkka(QCustomPlot * gr) : Graph(gr){graph->setPen(color());}
-QColor Kunkka::color(){  return QColor(0,0,200);}
-
-
 double Kunkka::errorfunc(double xi, double xi_1, double c){
     double h = xi_1 - xi, y = y_f(xi,c),y1, y2, y3, y4;
 
@@ -28,7 +24,7 @@ void Kunkka::Calculate(double x0, double y0, double X, int N){
 
     for(int i=1; i<=N; i++){
 
-        y1 = h * derivative(x[i-1], y[i-1]);
+        y1 = h * derivative(x[i-1] , y[i-1]);
         y2 = h * derivative(x[i-1] + h/2.0, y[i-1] + y1/2.0);
         y3 = h * derivative(x[i-1] + h/2.0, y[i-1] + y2/2.0);
         y4 = h * derivative(x[i-1] + h    , y[i-1] + y3    );

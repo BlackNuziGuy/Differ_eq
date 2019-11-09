@@ -21,26 +21,24 @@ public:
 
 private slots:
 
+    void on_radio_error_toggled();
+    void on_FIND_clicked();
+
     void on_X0_textChanged(const QString &arg1);
     void on_Y0_textChanged(const QString &arg1);
     void on_X_textChanged(const QString &arg1);
     void on_N_textChanged(const QString &arg1);
+    void on_N0_textChanged(const QString &arg1);
+    void on_Nmax_textChanged(const QString &arg1);
 
     void on_euler_toggled(bool checked);
     void on_exact_toggled(bool checked);
-
     void on_Bug_toggled(bool checked);
-    void on_radio_error_toggled();
-
-    void on_N0_textChanged(const QString &arg1);
-
-    void on_Nmax_textChanged(const QString &arg1);
-
-    void on_FIND_clicked();
-
     void on_imp_euler_toggled(bool checked);
-
     void on_kunkka_toggled(bool checked);
+    void on_Teuler_toggled(bool checked);
+    void on_Timp_euler_toggled(bool checked);
+    void on_TKunkka_toggled(bool checked);
 
 private:
     Ui::MainWindow *ui;
@@ -60,8 +58,6 @@ private:
     void set_graph_visibility(int ind, bool c);
     void change_value(bool*, double*, QString);
     void do_stuff_for_toterr();
-//    void Connect_Things();
-
 
 };
 #endif // MAINWINDOW_H

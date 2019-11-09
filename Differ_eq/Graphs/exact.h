@@ -2,24 +2,17 @@
 #define EXACT_GRAPH_H
 #include <Graph.h>
 
-class Exact : public Graph
-{
-
+class Exact : public Graph{
 
 public:
-
-    Exact(QCustomPlot *);
-//    virtual ~Exact();
-
-    QColor color();
+    Exact(QCustomPlot *gr):Graph(gr){
+        color = QColor(0,0,0);
+        graph->setPen(color);
+        graph->setName("Analytical");
+    }
 
     void Calculate(double x0, double y0, double X, int N);
-    static double func(double x, double c);
 
-
-
-private:
-//    double errorfunc(double xi, double xi_1, double c);
 };
 
 #endif // EXACT_GRAPH_H

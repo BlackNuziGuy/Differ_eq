@@ -11,12 +11,11 @@ public:
     Plotter(QCustomPlot *element){
         grid = element;
 
-        //Set interactions and appearance
-        grid->xAxis->ticker()->setTickStepStrategy( QCPAxisTicker::tssMeetTickCount);
         grid->xAxis->setLabel("x");
         grid->yAxis->setLabel("y");
+
+        grid->legend->setVisible(true);
     }
-//    virtual ~Plotter();
 
 
     virtual void Zoom(double, double, double) = 0;
