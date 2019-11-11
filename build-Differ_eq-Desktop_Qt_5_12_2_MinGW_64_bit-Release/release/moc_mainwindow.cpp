@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[20];
-    char stringdata0[319];
+    QByteArrayData data[28];
+    char stringdata0[403];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -50,7 +50,15 @@ QT_MOC_LITERAL(15, 221, 20), // "on_imp_euler_toggled"
 QT_MOC_LITERAL(16, 242, 17), // "on_kunkka_toggled"
 QT_MOC_LITERAL(17, 260, 17), // "on_Teuler_toggled"
 QT_MOC_LITERAL(18, 278, 21), // "on_Timp_euler_toggled"
-QT_MOC_LITERAL(19, 300, 18) // "on_TKunkka_toggled"
+QT_MOC_LITERAL(19, 300, 18), // "on_TKunkka_toggled"
+QT_MOC_LITERAL(20, 319, 12), // "xAxisChanged"
+QT_MOC_LITERAL(21, 332, 8), // "QCPRange"
+QT_MOC_LITERAL(22, 341, 8), // "newRange"
+QT_MOC_LITERAL(23, 350, 12), // "yAxisChanged"
+QT_MOC_LITERAL(24, 363, 14), // "limitAxisRange"
+QT_MOC_LITERAL(25, 378, 8), // "QCPAxis*"
+QT_MOC_LITERAL(26, 387, 4), // "axis"
+QT_MOC_LITERAL(27, 392, 10) // "limitRange"
 
     },
     "MainWindow\0on_radio_error_toggled\0\0"
@@ -61,7 +69,9 @@ QT_MOC_LITERAL(19, 300, 18) // "on_TKunkka_toggled"
     "checked\0on_exact_toggled\0on_Bug_toggled\0"
     "on_imp_euler_toggled\0on_kunkka_toggled\0"
     "on_Teuler_toggled\0on_Timp_euler_toggled\0"
-    "on_TKunkka_toggled"
+    "on_TKunkka_toggled\0xAxisChanged\0"
+    "QCPRange\0newRange\0yAxisChanged\0"
+    "limitAxisRange\0QCPAxis*\0axis\0limitRange"
 };
 #undef QT_MOC_LITERAL
 
@@ -71,7 +81,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      16,   14, // methods
+      19,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -79,22 +89,25 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   94,    2, 0x08 /* Private */,
-       3,    0,   95,    2, 0x08 /* Private */,
-       4,    1,   96,    2, 0x08 /* Private */,
-       6,    1,   99,    2, 0x08 /* Private */,
-       7,    1,  102,    2, 0x08 /* Private */,
-       8,    1,  105,    2, 0x08 /* Private */,
-       9,    1,  108,    2, 0x08 /* Private */,
-      10,    1,  111,    2, 0x08 /* Private */,
-      11,    1,  114,    2, 0x08 /* Private */,
-      13,    1,  117,    2, 0x08 /* Private */,
-      14,    1,  120,    2, 0x08 /* Private */,
-      15,    1,  123,    2, 0x08 /* Private */,
-      16,    1,  126,    2, 0x08 /* Private */,
-      17,    1,  129,    2, 0x08 /* Private */,
-      18,    1,  132,    2, 0x08 /* Private */,
-      19,    1,  135,    2, 0x08 /* Private */,
+       1,    0,  109,    2, 0x08 /* Private */,
+       3,    0,  110,    2, 0x08 /* Private */,
+       4,    1,  111,    2, 0x08 /* Private */,
+       6,    1,  114,    2, 0x08 /* Private */,
+       7,    1,  117,    2, 0x08 /* Private */,
+       8,    1,  120,    2, 0x08 /* Private */,
+       9,    1,  123,    2, 0x08 /* Private */,
+      10,    1,  126,    2, 0x08 /* Private */,
+      11,    1,  129,    2, 0x08 /* Private */,
+      13,    1,  132,    2, 0x08 /* Private */,
+      14,    1,  135,    2, 0x08 /* Private */,
+      15,    1,  138,    2, 0x08 /* Private */,
+      16,    1,  141,    2, 0x08 /* Private */,
+      17,    1,  144,    2, 0x08 /* Private */,
+      18,    1,  147,    2, 0x08 /* Private */,
+      19,    1,  150,    2, 0x08 /* Private */,
+      20,    1,  153,    2, 0x08 /* Private */,
+      23,    1,  156,    2, 0x08 /* Private */,
+      24,    3,  159,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -113,6 +126,9 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void, QMetaType::Bool,   12,
     QMetaType::Void, QMetaType::Bool,   12,
     QMetaType::Void, QMetaType::Bool,   12,
+    QMetaType::Void, 0x80000000 | 21,   22,
+    QMetaType::Void, 0x80000000 | 21,   22,
+    QMetaType::Void, 0x80000000 | 25, 0x80000000 | 21, 0x80000000 | 21,   26,   22,   27,
 
        0        // eod
 };
@@ -139,7 +155,21 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 13: _t->on_Teuler_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 14: _t->on_Timp_euler_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 15: _t->on_TKunkka_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 16: _t->xAxisChanged((*reinterpret_cast< const QCPRange(*)>(_a[1]))); break;
+        case 17: _t->yAxisChanged((*reinterpret_cast< const QCPRange(*)>(_a[1]))); break;
+        case 18: _t->limitAxisRange((*reinterpret_cast< QCPAxis*(*)>(_a[1])),(*reinterpret_cast< const QCPRange(*)>(_a[2])),(*reinterpret_cast< const QCPRange(*)>(_a[3]))); break;
         default: ;
+        }
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        switch (_id) {
+        default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+        case 18:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 0:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QCPAxis* >(); break;
+            }
+            break;
         }
     }
 }
@@ -173,13 +203,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 16)
+        if (_id < 19)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 16;
+        _id -= 19;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 16)
-            *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 16;
+        if (_id < 19)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 19;
     }
     return _id;
 }

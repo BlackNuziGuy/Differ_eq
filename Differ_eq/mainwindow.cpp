@@ -11,15 +11,23 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     EPlot = new Error_Plotter(ui->eplotter, MPlot);
     TEPlot = new TotError_Plotter(ui->Tot_plot, MPlot);
 
+    QVector<QWidget*> kek = { ui->SET, ui->Save, ui->Z1, ui->Z2, ui->l14,ui->l13, ui->X_val, ui->Y_val  };
     graph_check_boxes = { ui->euler, ui->imp_euler, ui->exact, ui->kunkka, ui->Teuler, ui->Timp_euler, ui->TKunkka};
+    plots = {MPlot, EPlot, TEPlot};
 
     Set_Appearance();
 
+//    for (auto p : plots){
+//        QCustomPlot*plot = p->grid;
+        connect(MPlot->grid->xAxis, SIGNAL(rangeChanged(QCPRange)), this, SLOT(xAxisChanged(QCPRange)));
+        connect(MPlot->grid->yAxis, SIGNAL(rangeChanged(QCPRange)), this, SLOT(yAxisChanged(QCPRange)));
 
-    //Add threads
-    //Add an ability to show 'precise' value
-    //    qDebug("X: %f",graph->xAxis->pixelToCoord( (QCursor::pos()).x() ));
-    //    graph->graph()->selectTest()
+        connect(EPlot->grid->xAxis, SIGNAL(rangeChanged(QCPRange)), this, SLOT(xAxisChanged(QCPRange)));
+        connect(EPlot->grid->yAxis, SIGNAL(rangeChanged(QCPRange)), this, SLOT(yAxisChanged(QCPRange)));
+//}
+
+    for (auto el: kek)
+        el->hide();
 }
 MainWindow::~MainWindow(){delete ui;}
 
@@ -31,6 +39,9 @@ void MainWindow::on_FIND_clicked()
 
     TEPlot->Caculate_all(X0, Y0, X, N0, Nmax);
     TEPlot->Zoom(N0,Nmax);
+
+    TEPlot->grid->yAxis->setRange(-0.5,80);
+    TEPlot->grid->replot();
 
     ui->FIND->setDisabled(true);
     }
@@ -51,17 +62,16 @@ void MainWindow::on_TKunkka_toggled(bool checked)   {TEPlot->ergraphs[2]->setVis
 void MainWindow::on_exact_toggled(bool checked)     {  MPlot->to_plot[0]->visible(checked)   ; MPlot->grid->replot();}
 void MainWindow::on_Bug_toggled(bool checked)
 {
-    Plotter *sas[] = {MPlot, EPlot, TEPlot};
 
-    for (auto Plot:sas){
-        //Drag
+    for (auto Plot:plots){
+
         if (checked)
             Plot->grid->setInteractions(Plot->grid->interactions() | QCP::iRangeDrag);
         else
             Plot->grid->setInteractions(Plot->grid->interactions() ^ QCP::iRangeDrag);
 
         Plot->grid->setInteraction(QCP::iRangeZoom,checked); //Scale
-        Plot->grid->setInteraction(QCP::iSelectPlottables, checked);//Selection
+//        Plot->grid->setInteraction(QCP::iSelectPlottables, checked);//Selection
     }
 }
 
@@ -122,17 +132,16 @@ void MainWindow::Set_Appearance(){
         qApp->setStyleSheet(ts.readAll());
     }
 
+    QString sas = "^(-?)(0|([0-9]?[0-9]?[0-9]?[0-9]?[0-9]))(\\.[0-9]?[0-9])?$";
 
-    //Filter input
-    QDoubleValidator *sas = new QDoubleValidator(-100, 100, 2);
-    QIntValidator *syas = new QIntValidator(1,9999);
+//    ui->X->setValidator(new QRegExpValidator(QRegExp(sas)));
+//    ui->X->setValidator(sas);
+//    ui->X0->setValidator(sas);
+//    ui->Y0->setValidator(sas);
+//    ui->N->setValidator(new QIntValidator(1,99999));
+//    ui->N0->setValidator(syas);
+//    ui->Nmax->setValidator(syas);
 
-    ui->X->setValidator(sas);
-    ui->X0->setValidator(sas);
-    ui->Y0->setValidator(sas);
-    ui->N->setValidator(new QIntValidator(1,99999));
-    ui->N0->setValidator(syas);
-    ui->Nmax->setValidator(syas);
 
 
     //Disable some elements
@@ -175,20 +184,24 @@ void MainWindow::do_stuff(){
 
     do_stuff_for_toterr();
 
-    if (X0_f && Y0_f && N_f && X_f && X>X0){
+    if (X0_f && Y0_f && N_f && X_f && X>X0 && gut(X0) && gut(X) && gut(Y0)){
 
         //Change color to black
         QString text = "<html><head/><body><p>	X<span style=\" vertical-align:sub;\">0</span></p></body></html>";
         ui->label_X0->setText("<font color=#ffffff>"+text+"</font>");
         ui->label_X->setText("<font color=#ffffff>X</font>");
+        text = "<html><head/><body><p>Y<span style=\" vertical-align:sub;\">0</span></p></body></html>";
+        ui->label_Y0->setText("<font color=#ffffff>"+text+"</font>");
+
 
 
         MPlot->Caculate_all(X0, Y0, X, N);
         EPlot->Caculate_all(X0, Y0, X, N);
 
-        MPlot->grid->savePng("SYAS");
+//        MPlot->grid->savePng("SYAS");
 
         EPlot->Zoom(X0,X);
+        EPlot->grid->yAxis->setRange(0,20);
         MPlot->Zoom(X0, X,Y0);
 
         for (auto box : graph_check_boxes ){
@@ -200,16 +213,30 @@ void MainWindow::do_stuff(){
     else{
 
         //Change color to red
-        if (X0_f && X_f && X<=X0){
+        if (X0_f && X_f && ( X<=X0 || !gut(X0) || !gut(X)) ){
             QString text = "<html><head/><body><p>	X<span style=\" vertical-align:sub;\">0</span></p></body></html>";
-            ui->label_X0->setText("<font color=#ff0000>"+text+"</font>");
-            ui->label_X->setText("<font color=#ff0000>X</font>");
+
+//            if (!gut(X0))
+//                ui->label_X0->setText("<font color=#ff0000>"+text+"</font>");
+//            if (!gut(X))
+//                ui->label_X->setText("<font color=#ff0000>X</font>");
+            if ( (X<=X0) ){
+                ui->label_X0->setText("<font color=#ff0000>"+text+"</font>");
+                ui->label_X->setText("<font color=#ff0000>X</font>");
+            }
+
         }
         else{ //Or not
             QString text = "<html><head/><body><p>	X<span style=\" vertical-align:sub;\">0</span></p></body></html>";
             ui->label_X0->setText("<font color=#ffffff>"+text+"</font>");
             ui->label_X->setText("<font color=#ffffff>X</font>");
         }
+        QString text = "<html><head/><body><p>Y<span style=\" vertical-align:sub;\">0</span></p></body></html>";
+        if (Y0_f && !gut(Y0))
+            ui->label_Y0->setText("<font color=#ff0000>"+text+"</font>");
+        else
+            ui->label_Y0->setText("<font color=#ffffff>"+text+"</font>");
+
 
         ui->FIND->setDisabled(true);
 
@@ -221,7 +248,7 @@ void MainWindow::do_stuff(){
 }
 void MainWindow::set_graph_visibility(int ind, bool c){
 
-    MPlot->to_plot[ind]->visible(c);
+    MPlot->to_plot[ind + 1]->visible(c);
     EPlot->ergraphs[ind]->setVisible(c);
 
     MPlot->grid->replot();
@@ -237,3 +264,68 @@ void MainWindow::change_value(bool *b, double *v, QString arg1){
         do_stuff();
     }
 }
+
+
+void MainWindow::xAxisChanged(const QCPRange & newRange)
+{
+    QCPAxis * axis = qobject_cast<QCPAxis *>(QObject::sender());
+    QCustomPlot * plot = axis->parentPlot();
+
+    QCPRange limitRange(plot->property("xmin").toDouble(), plot->property("xmax").toDouble());
+    limitAxisRange(axis, newRange, limitRange);
+
+    plot->replot();
+}
+void MainWindow::yAxisChanged(const QCPRange & newRange)
+{
+    QCPAxis * axis = qobject_cast<QCPAxis *>(QObject::sender());
+    QCustomPlot * plot = axis->parentPlot();
+
+    QCPRange limitRange(plot->property("ymin").toDouble(), plot->property("ymax").toDouble());
+    limitAxisRange(axis, newRange, limitRange);
+
+    plot->replot();
+}
+void MainWindow::limitAxisRange(QCPAxis * axis, const QCPRange & newRange, const QCPRange & limitRange)
+{
+    auto lowerBound = limitRange.lower;
+    auto upperBound = limitRange.upper;
+
+    // code assumes upperBound > lowerBound
+    QCPRange fixedRange(newRange);
+    if (fixedRange.lower < lowerBound)
+    {
+        fixedRange.lower = lowerBound;
+        fixedRange.upper = lowerBound + newRange.size();
+        if (fixedRange.upper > upperBound || qFuzzyCompare(newRange.size(), upperBound-lowerBound))
+            fixedRange.upper = upperBound;
+        axis->setRange(fixedRange); // adapt this line to use your plot/axis
+    } else if (fixedRange.upper > upperBound)
+    {
+        fixedRange.upper = upperBound;
+        fixedRange.lower = upperBound - newRange.size();
+        if (fixedRange.lower < lowerBound || qFuzzyCompare(newRange.size(), upperBound-lowerBound))
+            fixedRange.lower = lowerBound;
+        axis->setRange(fixedRange); // adapt this line to use your plot/axis
+    }
+}
+
+//void MainWindow::on_Save_pressed(){
+//    MPlot->grid->savePng("Main.png");
+//    EPlot->grid->savePng("Error.png");
+//    TEPlot->grid->savePng("Total.png");
+//}
+
+//void MainWindow::on_SET_clicked()
+//{
+//    MPlot->grid->yAxis->setRange( ui->Z1->text().toDouble(), ui->Z2->text().toDouble()  );
+//    EPlot->grid->yAxis->setRange( ui->Z1->text().toDouble(), ui->Z2->text().toDouble()  );
+//    TEPlot->grid->yAxis->setRange( ui->Z1->text().toDouble(), ui->Z2->text().toDouble()  );
+
+//    MPlot->grid->replot();
+//    EPlot->grid->replot();
+//    TEPlot->grid->replot();
+
+//}
+
+

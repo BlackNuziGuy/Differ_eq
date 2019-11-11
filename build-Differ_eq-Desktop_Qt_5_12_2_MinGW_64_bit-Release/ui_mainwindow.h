@@ -49,7 +49,7 @@ public:
     QSpacerItem *verticalSpacer_6;
     QLabel *label_X0;
     QLineEdit *X0;
-    QLabel *label_2;
+    QLabel *label_Y0;
     QLineEdit *Y0;
     QLabel *label_X;
     QLineEdit *X;
@@ -73,8 +73,8 @@ public:
     QHBoxLayout *horizontalLayout_10;
     QSpacerItem *horizontalSpacer_4;
     QCheckBox *exact;
-    QLabel *label_13;
-    QLabel *label228;
+    QLabel *l13;
+    QLabel *l14;
     QSpacerItem *verticalSpacer;
     QSpacerItem *verticalSpacer_2;
     QLabel *X_val;
@@ -119,6 +119,10 @@ public:
     QSpacerItem *verticalSpacer_13;
     QSpacerItem *verticalSpacer_14;
     QLabel *label;
+    QPushButton *Save;
+    QPushButton *SET;
+    QLineEdit *Z1;
+    QLineEdit *Z2;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -255,16 +259,16 @@ public:
 
         formLayout_2->setWidget(3, QFormLayout::FieldRole, X0);
 
-        label_2 = new QLabel(tab_1);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        sizePolicy1.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
-        label_2->setSizePolicy(sizePolicy1);
-        label_2->setMaximumSize(QSize(80, 50));
-        label_2->setFont(font4);
-        label_2->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
-        label_2->setIndent(20);
+        label_Y0 = new QLabel(tab_1);
+        label_Y0->setObjectName(QString::fromUtf8("label_Y0"));
+        sizePolicy1.setHeightForWidth(label_Y0->sizePolicy().hasHeightForWidth());
+        label_Y0->setSizePolicy(sizePolicy1);
+        label_Y0->setMaximumSize(QSize(80, 50));
+        label_Y0->setFont(font4);
+        label_Y0->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_Y0->setIndent(20);
 
-        formLayout_2->setWidget(4, QFormLayout::LabelRole, label_2);
+        formLayout_2->setWidget(4, QFormLayout::LabelRole, label_Y0);
 
         Y0 = new QLineEdit(tab_1);
         Y0->setObjectName(QString::fromUtf8("Y0"));
@@ -432,23 +436,23 @@ public:
 
         formLayout_2->setLayout(11, QFormLayout::FieldRole, horizontalLayout_10);
 
-        label_13 = new QLabel(tab_1);
-        label_13->setObjectName(QString::fromUtf8("label_13"));
-        sizePolicy2.setHeightForWidth(label_13->sizePolicy().hasHeightForWidth());
-        label_13->setSizePolicy(sizePolicy2);
-        label_13->setMinimumSize(QSize(80, 0));
-        label_13->setMaximumSize(QSize(80, 16777215));
-        label_13->setTextFormat(Qt::RichText);
-        label_13->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
-        label_13->setIndent(0);
+        l13 = new QLabel(tab_1);
+        l13->setObjectName(QString::fromUtf8("l13"));
+        sizePolicy2.setHeightForWidth(l13->sizePolicy().hasHeightForWidth());
+        l13->setSizePolicy(sizePolicy2);
+        l13->setMinimumSize(QSize(80, 0));
+        l13->setMaximumSize(QSize(80, 16777215));
+        l13->setTextFormat(Qt::RichText);
+        l13->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        l13->setIndent(0);
 
-        formLayout_2->setWidget(13, QFormLayout::LabelRole, label_13);
+        formLayout_2->setWidget(13, QFormLayout::LabelRole, l13);
 
-        label228 = new QLabel(tab_1);
-        label228->setObjectName(QString::fromUtf8("label228"));
-        label228->setAlignment(Qt::AlignCenter);
+        l14 = new QLabel(tab_1);
+        l14->setObjectName(QString::fromUtf8("l14"));
+        l14->setAlignment(Qt::AlignCenter);
 
-        formLayout_2->setWidget(13, QFormLayout::FieldRole, label228);
+        formLayout_2->setWidget(13, QFormLayout::FieldRole, l14);
 
         verticalSpacer = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Ignored);
 
@@ -573,7 +577,7 @@ public:
         sizePolicy5.setVerticalStretch(0);
         sizePolicy5.setHeightForWidth(N0->sizePolicy().hasHeightForWidth());
         N0->setSizePolicy(sizePolicy5);
-        N0->setMaximumSize(QSize(47, 16777215));
+        N0->setMaximumSize(QSize(50, 16777215));
         N0->setMaxLength(4);
         N0->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
@@ -591,7 +595,7 @@ public:
         Nmax->setObjectName(QString::fromUtf8("Nmax"));
         sizePolicy5.setHeightForWidth(Nmax->sizePolicy().hasHeightForWidth());
         Nmax->setSizePolicy(sizePolicy5);
-        Nmax->setMaximumSize(QSize(47, 16777215));
+        Nmax->setMaximumSize(QSize(50, 16777215));
         Nmax->setMaxLength(4);
 
         formLayout_3->setWidget(2, QFormLayout::FieldRole, Nmax);
@@ -691,6 +695,36 @@ public:
 
         formLayout_3->setWidget(4, QFormLayout::FieldRole, label);
 
+        Save = new QPushButton(tab_2);
+        Save->setObjectName(QString::fromUtf8("Save"));
+        Save->setEnabled(false);
+
+        formLayout_3->setWidget(9, QFormLayout::LabelRole, Save);
+
+        SET = new QPushButton(tab_2);
+        SET->setObjectName(QString::fromUtf8("SET"));
+        SET->setEnabled(false);
+
+        formLayout_3->setWidget(9, QFormLayout::FieldRole, SET);
+
+        Z1 = new QLineEdit(tab_2);
+        Z1->setObjectName(QString::fromUtf8("Z1"));
+        Z1->setEnabled(false);
+        sizePolicy1.setHeightForWidth(Z1->sizePolicy().hasHeightForWidth());
+        Z1->setSizePolicy(sizePolicy1);
+        Z1->setMaximumSize(QSize(80, 16777215));
+
+        formLayout_3->setWidget(10, QFormLayout::LabelRole, Z1);
+
+        Z2 = new QLineEdit(tab_2);
+        Z2->setObjectName(QString::fromUtf8("Z2"));
+        Z2->setEnabled(false);
+        sizePolicy1.setHeightForWidth(Z2->sizePolicy().hasHeightForWidth());
+        Z2->setSizePolicy(sizePolicy1);
+        Z2->setMaximumSize(QSize(80, 16777215));
+
+        formLayout_3->setWidget(10, QFormLayout::FieldRole, Z2);
+
 
         horizontalLayout_4->addLayout(formLayout_3);
 
@@ -711,7 +745,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
         stackedWidget->setCurrentIndex(0);
 
 
@@ -723,7 +757,7 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Assignment by Vitaliy Korbashov ", nullptr));
         label_6->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt;\">This Program implements the solution for the Variant 10</span></p><p align=\"center\"><span style=\" font-size:16pt;\">Differential equation: y</span><span style=\" font-size:16pt; vertical-align:super;\">'</span><span style=\" font-size:16pt;\">= -y</span><span style=\" font-size:16pt; vertical-align:super;\">2</span><span style=\" font-size:16pt;\">/3 -2/(3x</span><span style=\" font-size:16pt; vertical-align:super;\">2</span><span style=\" font-size:16pt;\">)</span></p><p align=\"center\"><span style=\" font-size:16pt;\"><br/></span></p><p><span style=\" font-size:16pt;\">The following plots and respective error graphs are available:</span></p><p><span style=\" font-size:16pt;\">- Exact solution</span></p><p><span style=\" font-size:16pt;\">- Euler approximation</span></p><p><span style=\" font-size:16pt;\">- Improved Euler approximation</span></p><p><span style=\" font-size:16pt;\">- Runge-kutta approximation<br/></span></p><p align=\""
                         "center\"><span style=\" font-size:16pt;\"><br/></span></p><p align=\"center\"><span style=\" font-size:16pt;\">Made by</span></p><p align=\"center\"><span style=\" font-size:16pt;\">Vitaliy Korbashov,BS18-04</span></p></body></html>", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_0), QApplication::translate("MainWindow", "Descrpition", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_0), QApplication::translate("MainWindow", "Description", nullptr));
 #ifndef QT_NO_TOOLTIP
         tab_1->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
@@ -734,7 +768,7 @@ public:
 #ifndef QT_NO_TOOLTIP
         X0->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
-        label_2->setText(QApplication::translate("MainWindow", "<html><head/><body><p>Y<span style=\" vertical-align:sub;\">0</span></p></body></html>", nullptr));
+        label_Y0->setText(QApplication::translate("MainWindow", "<html><head/><body><p>Y<span style=\" vertical-align:sub;\">0</span></p></body></html>", nullptr));
 #ifndef QT_NO_TOOLTIP
         Y0->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
@@ -754,8 +788,8 @@ public:
         kunkka->setText(QString());
         label_10->setText(QApplication::translate("MainWindow", "<html><head/><body><p>Main graph</p></body></html>", nullptr));
         exact->setText(QString());
-        label_13->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt;\">		X</span></p></body></html>", nullptr));
-        label228->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:16pt;\">Y</span></p></body></html>", nullptr));
+        l13->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt;\">		X</span></p></body></html>", nullptr));
+        l14->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:16pt;\">Y</span></p></body></html>", nullptr));
         X_val->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
         Y_val->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_1), QApplication::translate("MainWindow", "Main\\Error graphs", nullptr));
@@ -769,6 +803,8 @@ public:
         TKunkka->setText(QString());
         FIND->setText(QApplication::translate("MainWindow", "Find errors", nullptr));
         label->setText(QApplication::translate("MainWindow", "Be wary!!", nullptr));
+        Save->setText(QApplication::translate("MainWindow", "Save", nullptr));
+        SET->setText(QApplication::translate("MainWindow", "SET ZOOM", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Total error graph", nullptr));
     } // retranslateUi
 

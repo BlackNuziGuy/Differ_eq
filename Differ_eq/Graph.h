@@ -33,17 +33,13 @@ public:
             return (y0*pow(pow(x0,4),1/3.0)-2*( -pow(-x0,1/3.0)) )/(1-x0*y0);//C kostil
     }
 
-
-    bool cmpd(double A, double B, double epsilon = 0.001){
-        return (fabs(A - B) < epsilon);
-    }
     double find_biggest_error(double x0, double y0, double X, int N)
     {
         //SHOULD IT BE THE ABSOLUTE VALUE??????!!!!
 
         double err = 0;
         double h = (X-x0)/N;
-        double c = constant(x0,y0);//Tricky
+        double c = constant(x0,y0);
 
         //Go over every x value
         while(x0<=X){

@@ -21,6 +21,8 @@ void TotError_Plotter::Caculate_all(double x0, double y0, double X, int N0, int 
         grid->replot();
     }
 
+    grid->yAxis->setRange(-0.5,80);
+
     grid->replot();
 }
 

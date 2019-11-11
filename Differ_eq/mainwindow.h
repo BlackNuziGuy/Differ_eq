@@ -39,6 +39,14 @@ private slots:
     void on_Teuler_toggled(bool checked);
     void on_Timp_euler_toggled(bool checked);
     void on_TKunkka_toggled(bool checked);
+    void xAxisChanged(const QCPRange & newRange);
+    void yAxisChanged(const QCPRange & newRange);
+    void limitAxisRange(QCPAxis * axis, const QCPRange & newRange, const QCPRange & limitRange);
+
+
+//    void on_Save_pressed();
+
+//    void on_SET_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -46,6 +54,7 @@ private:
     Error_Plotter *EPlot;
     TotError_Plotter *TEPlot;
 
+    QVector<Plotter*> plots;
     QVector<QCheckBox*> graph_check_boxes;
 
     double X0,Y0,X;
@@ -58,6 +67,11 @@ private:
     void set_graph_visibility(int ind, bool c);
     void change_value(bool*, double*, QString);
     void do_stuff_for_toterr();
+    bool gut( double x){
+        if( x>-999.99 && x < 999.99)
+            return true;
+        else return false;
+    }
 
 };
 #endif // MAINWINDOW_H

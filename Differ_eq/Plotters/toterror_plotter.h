@@ -15,7 +15,8 @@ public:
 
     void Zoom(double x0, double x1){
         grid->xAxis->setRange(x0,x1);
-        grid->yAxis->setRange(-1,100);
+//        grid->yAxis->setRange(-1,100);
+        grid->yAxis->rescale(true);
 
         grid->replot();
         grid->replot();
