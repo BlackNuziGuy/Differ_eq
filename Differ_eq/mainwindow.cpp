@@ -11,20 +11,17 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     EPlot = new Error_Plotter(ui->eplotter, MPlot);
     TEPlot = new TotError_Plotter(ui->Tot_plot, MPlot);
 
-    QVector<QWidget*> kek = { ui->SET, ui->Save, ui->Z1, ui->Z2, ui->l14,ui->l13, ui->X_val, ui->Y_val  };
+    QVector<QWidget*> kek = { /*ui->SET, ui->Save, ui->Z1, ui->Z2,*/ ui->l14,ui->l13, ui->X_val, ui->Y_val  };
     graph_check_boxes = { ui->euler, ui->imp_euler, ui->exact, ui->kunkka, ui->Teuler, ui->Timp_euler, ui->TKunkka};
     plots = {MPlot, EPlot, TEPlot};
 
     Set_Appearance();
 
-//    for (auto p : plots){
-//        QCustomPlot*plot = p->grid;
-        connect(MPlot->grid->xAxis, SIGNAL(rangeChanged(QCPRange)), this, SLOT(xAxisChanged(QCPRange)));
-        connect(MPlot->grid->yAxis, SIGNAL(rangeChanged(QCPRange)), this, SLOT(yAxisChanged(QCPRange)));
+    connect(MPlot->grid->xAxis, SIGNAL(rangeChanged(QCPRange)), this, SLOT(xAxisChanged(QCPRange)));
+    connect(MPlot->grid->yAxis, SIGNAL(rangeChanged(QCPRange)), this, SLOT(yAxisChanged(QCPRange)));
 
-        connect(EPlot->grid->xAxis, SIGNAL(rangeChanged(QCPRange)), this, SLOT(xAxisChanged(QCPRange)));
-        connect(EPlot->grid->yAxis, SIGNAL(rangeChanged(QCPRange)), this, SLOT(yAxisChanged(QCPRange)));
-//}
+    connect(EPlot->grid->xAxis, SIGNAL(rangeChanged(QCPRange)), this, SLOT(xAxisChanged(QCPRange)));
+    connect(EPlot->grid->yAxis, SIGNAL(rangeChanged(QCPRange)), this, SLOT(yAxisChanged(QCPRange)));
 
     for (auto el: kek)
         el->hide();
@@ -59,7 +56,7 @@ void MainWindow::on_kunkka_toggled(bool checked)    {set_graph_visibility(2,chec
 void MainWindow::on_Teuler_toggled(bool checked)    {TEPlot->ergraphs[0]->setVisible(checked); TEPlot->grid->replot();}
 void MainWindow::on_Timp_euler_toggled(bool checked){TEPlot->ergraphs[1]->setVisible(checked); TEPlot->grid->replot();}
 void MainWindow::on_TKunkka_toggled(bool checked)   {TEPlot->ergraphs[2]->setVisible(checked); TEPlot->grid->replot();}
-void MainWindow::on_exact_toggled(bool checked)     {  MPlot->to_plot[0]->visible(checked)   ; MPlot->grid->replot();}
+void MainWindow::on_exact_toggled(bool checked)     {  MPlot->graphs[0]->visible(checked)   ; MPlot->grid->replot();}
 void MainWindow::on_Bug_toggled(bool checked)
 {
 
@@ -82,19 +79,21 @@ void MainWindow::on_Y0_textChanged(const QString &arg1){change_value(&Y0_f,&Y0,a
 void MainWindow::on_X_textChanged(const QString &arg1) {change_value(&X_f, &X, arg1);}
 void MainWindow::on_N_textChanged(const QString &arg1)
 {
-    if (arg1.isEmpty() || arg1.toInt() == 0){
+    auto temp =  arg1.toInt();
+    if (arg1.isEmpty() || temp <= 0){
         N_f = false;
     }
     else{
         N_f = true;
-        N = arg1.toInt();
+        N = temp;
 
         do_stuff();
     }
 }
 void MainWindow::on_N0_textChanged(const QString &arg1){
 
-    if (arg1.isEmpty() /*|| arg1.toInt() == 0*/){
+    auto temp =  arg1.toInt();
+    if (arg1.isEmpty() || temp <= 0){
         N0_f = false;
     }
     else{
@@ -107,7 +106,8 @@ void MainWindow::on_N0_textChanged(const QString &arg1){
 }
 void MainWindow::on_Nmax_textChanged(const QString &arg1){
 
-    if (arg1.isEmpty() /*|| arg1.toInt() == 0*/){
+    auto temp =  arg1.toInt();
+    if (arg1.isEmpty() || temp <= 0){
         Nmax_f = false;
     }
     else{
@@ -133,16 +133,6 @@ void MainWindow::Set_Appearance(){
     }
 
     QString sas = "^(-?)(0|([0-9]?[0-9]?[0-9]?[0-9]?[0-9]))(\\.[0-9]?[0-9])?$";
-
-//    ui->X->setValidator(new QRegExpValidator(QRegExp(sas)));
-//    ui->X->setValidator(sas);
-//    ui->X0->setValidator(sas);
-//    ui->Y0->setValidator(sas);
-//    ui->N->setValidator(new QIntValidator(1,99999));
-//    ui->N0->setValidator(syas);
-//    ui->Nmax->setValidator(syas);
-
-
 
     //Disable some elements
 
@@ -250,7 +240,7 @@ void MainWindow::do_stuff(){
 }
 void MainWindow::set_graph_visibility(int ind, bool c){
 
-    MPlot->to_plot[ind + 1]->visible(c);
+    MPlot->graphs[ind + 1]->visible(c);
     EPlot->ergraphs[ind]->setVisible(c);
 
     MPlot->grid->replot();
@@ -312,22 +302,22 @@ void MainWindow::limitAxisRange(QCPAxis * axis, const QCPRange & newRange, const
     }
 }
 
-//void MainWindow::on_Save_pressed(){
-//    MPlot->grid->savePng("Main.png");
-//    EPlot->grid->savePng("Error.png");
-//    TEPlot->grid->savePng("Total.png");
-//}
+void MainWindow::on_Save_pressed(){
+    MPlot->grid->savePng("Main.png");
+    EPlot->grid->savePng("Error.png");
+    TEPlot->grid->savePng("Total.png");
+}
 
-//void MainWindow::on_SET_clicked()
-//{
-//    MPlot->grid->yAxis->setRange( ui->Z1->text().toDouble(), ui->Z2->text().toDouble()  );
-//    EPlot->grid->yAxis->setRange( ui->Z1->text().toDouble(), ui->Z2->text().toDouble()  );
-//    TEPlot->grid->yAxis->setRange( ui->Z1->text().toDouble(), ui->Z2->text().toDouble()  );
+void MainWindow::on_SET_clicked()
+{
+    MPlot->grid->yAxis->setRange( ui->Z1->text().toDouble(), ui->Z2->text().toDouble()  );
+    EPlot->grid->yAxis->setRange( ui->Z1->text().toDouble(), ui->Z2->text().toDouble()  );
+    TEPlot->grid->yAxis->setRange( ui->Z1->text().toDouble(), ui->Z2->text().toDouble()  );
 
-//    MPlot->grid->replot();
-//    EPlot->grid->replot();
-//    TEPlot->grid->replot();
+    MPlot->grid->replot();
+    EPlot->grid->replot();
+    TEPlot->grid->replot();
 
-//}
+}
 
 

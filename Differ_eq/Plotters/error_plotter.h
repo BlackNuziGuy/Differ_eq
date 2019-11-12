@@ -11,7 +11,7 @@ public:
     Error_Plotter(QCustomPlot *cp,Main_Plotter *pl) : Plotter(cp){
 
         //Magic
-        graphs = QVector<Graph*>(pl->to_plot);
+        graphs = QVector<Graph*>(pl->graphs);
         graphs.remove(0);
 
         //Generate new graphs automatically
@@ -34,8 +34,5 @@ public:
 
 private:
     void Zoom(double, double,double) override{}
-
-protected:
-    QVector<Graph*> graphs;
 };
 #endif // ERROR_GRAPH_H

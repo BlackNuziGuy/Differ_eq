@@ -16,7 +16,7 @@ void Main_Plotter::Zoom(double x1, double x2, double y)
 
 void Main_Plotter::Caculate_all(double x0, double y0, double X, int N){
 
-    for (auto gr : to_plot ){
+    for (auto gr : graphs ){
         gr->Calculate(x0, y0, X, N);
         grid->replot();
     }

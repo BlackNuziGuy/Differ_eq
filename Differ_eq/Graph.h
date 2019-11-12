@@ -15,11 +15,8 @@ public:
         graph = gr->addGraph();
         graph->setAdaptiveSampling(false);
     }
-
-//    virtual ~Graph();
-
     virtual void Calculate(double, double, double , int) = 0;
-    virtual double errorfunc(double , double , double ){qDebug("YOU BAFFUN!");exit(228);}
+    virtual double errorfunc(double , double , double ){exit(228);}
     virtual void visible(bool x){ graph->setVisible(x);}
 
     //Necesasry calculation functions
@@ -32,7 +29,6 @@ public:
         else
             return (y0*pow(pow(x0,4),1/3.0)-2*( -pow(-x0,1/3.0)) )/(1-x0*y0);//C kostil
     }
-
     double find_biggest_error(double x0, double y0, double X, int N)
     {
         //SHOULD IT BE THE ABSOLUTE VALUE??????!!!!
@@ -51,8 +47,6 @@ public:
 
         return err;
     }
-
-
 };
 
 

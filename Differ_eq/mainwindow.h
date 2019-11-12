@@ -44,9 +44,9 @@ private slots:
     void limitAxisRange(QCPAxis * axis, const QCPRange & newRange, const QCPRange & limitRange);
 
 
-//    void on_Save_pressed();
+    void on_Save_pressed();
 
-//    void on_SET_clicked();
+    void on_SET_clicked();
 
 private:
     Ui::MainWindow *ui;

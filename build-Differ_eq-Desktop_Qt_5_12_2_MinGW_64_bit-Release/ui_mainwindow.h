@@ -697,19 +697,19 @@ public:
 
         Save = new QPushButton(tab_2);
         Save->setObjectName(QString::fromUtf8("Save"));
-        Save->setEnabled(false);
+        Save->setEnabled(true);
 
         formLayout_3->setWidget(9, QFormLayout::LabelRole, Save);
 
         SET = new QPushButton(tab_2);
         SET->setObjectName(QString::fromUtf8("SET"));
-        SET->setEnabled(false);
+        SET->setEnabled(true);
 
         formLayout_3->setWidget(9, QFormLayout::FieldRole, SET);
 
         Z1 = new QLineEdit(tab_2);
         Z1->setObjectName(QString::fromUtf8("Z1"));
-        Z1->setEnabled(false);
+        Z1->setEnabled(true);
         sizePolicy1.setHeightForWidth(Z1->sizePolicy().hasHeightForWidth());
         Z1->setSizePolicy(sizePolicy1);
         Z1->setMaximumSize(QSize(80, 16777215));
@@ -718,7 +718,7 @@ public:
 
         Z2 = new QLineEdit(tab_2);
         Z2->setObjectName(QString::fromUtf8("Z2"));
-        Z2->setEnabled(false);
+        Z2->setEnabled(true);
         sizePolicy1.setHeightForWidth(Z2->sizePolicy().hasHeightForWidth());
         Z2->setSizePolicy(sizePolicy1);
         Z2->setMaximumSize(QSize(80, 16777215));

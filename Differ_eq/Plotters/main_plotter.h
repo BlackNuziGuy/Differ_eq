@@ -11,18 +11,12 @@
 class Main_Plotter : public Plotter
 {
 public:
-    QVector<Graph*> to_plot;
-
     //Add new graphs here; REMEMBER the order for the "visible" toggle functions
     Main_Plotter(QCustomPlot * element) : Plotter(element){
-    to_plot = {new Exact(element), new Euler(element), new Imp_Euler(element), new Kunkka(element)} ;}
-
-
+    graphs = {new Exact(element), new Euler(element), new Imp_Euler(element), new Kunkka(element)} ;}
 
     void Zoom(double, double, double);
     void Caculate_all(double x0, double y0, double X, int N);
-
-
 };
 
 

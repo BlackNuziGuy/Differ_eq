@@ -16,8 +16,8 @@ double Kunkka::errorfunc(double xi, double xi_1, double c){
 
 void Kunkka::Calculate(double x0, double y0, double X, int N){
 
-    QVector<double> x(N+1), y(N+1);
-    double h = (X-x0)/N;
+    QVector<double> x(N+1), y(N+1); // N steps + N0
+    const double h = (X-x0)/N;
     double y1, y2, y3, y4;
 
     x[0] = x0; y[0] = y0;

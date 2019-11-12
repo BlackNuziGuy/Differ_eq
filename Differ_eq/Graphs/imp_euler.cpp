@@ -11,7 +11,6 @@ double Imp_Euler::errorfunc(double xi, double xi_1, double c){
 
     return ( (y_f(xi_1,c) - y) - ya);
 }
-
 void Imp_Euler::Calculate(double x0, double y0, double X, int N){
 
     QVector<double> x(N+1), y(N+1);
@@ -33,6 +32,5 @@ void Imp_Euler::Calculate(double x0, double y0, double X, int N){
             y0=y2;                //pass this new y as y0 in the next iteration.
         }
     }
-
     graph->setData(x, y);
 }
