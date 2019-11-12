@@ -209,6 +209,9 @@ void MainWindow::do_stuff(){
             box->setChecked(true);
         }
 
+        if ( ui->radio_error->isChecked())
+            ui->exact->setDisabled(true);
+
     }
     else{
 
@@ -242,7 +245,6 @@ void MainWindow::do_stuff(){
 
         for (auto box : graph_check_boxes )
             box->setDisabled(true);
-
     }
 
 }

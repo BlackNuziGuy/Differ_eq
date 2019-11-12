@@ -9,7 +9,11 @@ public:
     TotError_Plotter(QCustomPlot *cp, Main_Plotter *pl) : Error_Plotter(cp, pl){
         grid->xAxis->setLabel("N");
         grid->yAxis->setLabel("Error");
+
+        xv.resize(ergraphs.size()); yv.resize(ergraphs.size());
     }
+
+    QVector< QVector<double> > xv, yv;//Two vectors of corresponding values for each graph
 
     void Caculate_all(double x0, double y0, double X, int N0, int Nmax);
 
